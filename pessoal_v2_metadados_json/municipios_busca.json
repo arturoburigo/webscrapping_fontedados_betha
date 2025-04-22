@@ -1,0 +1,144 @@
+{
+    "representation": {
+        "type": "Municipio",
+        "defaultFields": [
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de municípios",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "municipio.estado.siglaEstado": {
+            "description": "Sigla do estado",
+            "type": "String"
+        },
+        "estado.pais.id": {
+            "description": "Id do pais",
+            "type": "Long"
+        },
+        "estado.id": {
+            "description": "Id do estado",
+            "type": "Long"
+        },
+        "codigoIbge": {
+            "description": "Código no IBGE",
+            "type": "Long"
+        },
+        "nome": {
+            "description": "Nome",
+            "type": "String"
+        },
+        "codigoSiafi": {
+            "description": "Código no SIAFI",
+            "type": "Long"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "cep": {
+            "description": "CEP geral",
+            "type": "Long"
+        }
+    },
+    "types": {
+        "Pais": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla2C": {
+                "description": "Sigla ISO-2",
+                "type": "String"
+            },
+            "sigla3C": {
+                "description": "Sigla ISO-3",
+                "type": "String"
+            },
+            "sigla3D": {
+                "description": "Sigla 3D",
+                "type": "String"
+            },
+            "codigoBacen": {
+                "description": "Código no BACEN/IBGE",
+                "type": "String"
+            },
+            "codigoEsocial": {
+                "description": "Código no eSocial",
+                "type": "String"
+            }
+        },
+        "Estado": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Integer"
+            },
+            "pais": {
+                "description": "País",
+                "type": "Pais"
+            }
+        },
+        "Municipio": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "estado": {
+                "description": "Estado",
+                "type": "Estado"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Long"
+            },
+            "codigoSiafi": {
+                "description": "Código no SIAFI",
+                "type": "Long"
+            },
+            "cep": {
+                "description": "CEP geral",
+                "type": "Long"
+            }
+        }
+    },
+    "codeExample": "fonteMunicipios = Dados.pessoal.v2.municipios;\n\nfiltroMunicipios = \"estado.id = null\"\n\ndadosMunicipios = fonteMunicipios.busca(criterio: filtroMunicipios,campos: \"id, nome, codigoIbge, cep, codigoSiafi, estado(nome, id, sigla)\",ordenacao: \"nome asc\")\n\npercorrer (dadosMunicipios) { itemMunicipios ->\n\n}",
+    "description": "Municípios",
+    "name": "municipios"
+}

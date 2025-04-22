@@ -1,0 +1,191 @@
+{
+    "representation": {
+        "type": "Bairro",
+        "defaultFields": [
+            "nome",
+            "id"
+        ]
+    },
+    "method": {
+        "name": "buscaBairrosLogradouro",
+        "verb": "GET",
+        "description": "Listagem de bairros do logradouro",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        },
+        "pathParams": [
+            {
+                "name": "logradouroId",
+                "metadata": {
+                    "type": "Long"
+                }
+            }
+        ]
+    },
+    "expressions": {
+        "municipio.id": {
+            "description": "Id do município",
+            "type": "Long"
+        },
+        "nome": {
+            "description": "Nome",
+            "type": "String"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "zonaRural": {
+            "description": "Zona rural",
+            "type": "Boolean"
+        }
+    },
+    "types": {
+        "Pais": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla2C": {
+                "description": "Sigla ISO-2",
+                "type": "String"
+            },
+            "sigla3C": {
+                "description": "Sigla ISO-3",
+                "type": "String"
+            },
+            "sigla3D": {
+                "description": "Sigla 3D",
+                "type": "String"
+            },
+            "codigoBacen": {
+                "description": "Código no BACEN/IBGE",
+                "type": "String"
+            },
+            "codigoEsocial": {
+                "description": "Código no eSocial",
+                "type": "String"
+            }
+        },
+        "Estado": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Integer"
+            },
+            "pais": {
+                "description": "País",
+                "type": "Pais"
+            }
+        },
+        "Municipio": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "estado": {
+                "description": "Estado",
+                "type": "Estado"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Long"
+            },
+            "codigoSiafi": {
+                "description": "Código no SIAFI",
+                "type": "Long"
+            },
+            "cep": {
+                "description": "CEP geral",
+                "type": "Long"
+            }
+        },
+        "Bairro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "Municipio"
+            },
+            "zonaRural": {
+                "description": "Zona rural",
+                "type": "Boolean"
+            }
+        },
+        "TipoLogradouro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "abreviatura": {
+                "description": "Abreviatura",
+                "type": "String"
+            }
+        },
+        "Logradouro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "Municipio"
+            },
+            "tipoLogradouro": {
+                "description": "Tipo",
+                "type": "TipoLogradouro"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "cep": {
+                "description": "CEP principal",
+                "type": "String"
+            }
+        }
+    },
+    "codeExample": "fonteLogradouros = Dados.pessoal.v2.logradouros;\n\ndadosLogradouros = fonteLogradouros.buscaBairrosLogradouro(campos: \"id, nome\",ordenacao: \"id asc\",parametros:[\"logradouroId\":null])\n\npercorrer (dadosLogradouros) { itemLogradouros ->\n\n}",
+    "description": "Logradouros",
+    "name": "logradouros"
+}

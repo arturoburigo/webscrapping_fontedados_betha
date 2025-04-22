@@ -1,0 +1,443 @@
+{
+    "representation": {
+        "type": "ManutencaoEstabelecimento",
+        "defaultFields": []
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de manutenção de estabelecimento",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "entidade": {
+            "description": "Identificador da entidade",
+            "type": "Long",
+            "sort": "false"
+        },
+        "inicioVigencia": {
+            "description": "Início vigência",
+            "type": "YearMonth"
+        },
+        "id": {
+            "description": "Identificador",
+            "type": "Long",
+            "sort": "false"
+        }
+    },
+    "types": {
+        "AtoManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "numeroOficial": {
+                "description": "Número oficial",
+                "type": "String"
+            },
+            "descricao": {
+                "description": "Descrição tipo do ato",
+                "type": "String"
+            }
+        },
+        "ConfiguracaoEncargosSociaisGeralManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "percentualInssEmpregador": {
+                "description": "Percentual de INSS do empregador sobre servidores",
+                "type": "BigDecimal"
+            },
+            "percentualInssEmpregadorAutonomo": {
+                "description": "Percentual de INSS do empregador sobre autônomos",
+                "type": "BigDecimal"
+            },
+            "cnaePreponderante": {
+                "description": "CNAE preponderante",
+                "type": "String"
+            },
+            "percentualGilRat": {
+                "description": "Percentual GIL RAT",
+                "type": "Integer"
+            },
+            "fap": {
+                "description": "FAP",
+                "type": "BigDecimal"
+            },
+            "codigoTerceiros": {
+                "description": "Código de terceiros",
+                "type": "Integer"
+            },
+            "percentualTerceiros": {
+                "description": "Percentual de terceiros",
+                "type": "BigDecimal"
+            },
+            "percentualIsencaoFilantropia": {
+                "description": "Percentual de insenção de filantropia",
+                "type": "BigDecimal"
+            },
+            "codigoMatriculaInss": {
+                "description": "Código da matrícula INSS",
+                "type": "String"
+            },
+            "codigoGps": {
+                "description": "Código GPS"
+            },
+            "codigoFpas": {
+                "description": "Código FPAS"
+            },
+            "codigoGpsAutonomo": {
+                "description": "Código GPS autônomo"
+            },
+            "percentualSestAutonomo": {
+                "description": "Percentual SEST autônomo",
+                "type": "BigDecimal"
+            },
+            "percentualSenatAutonomo": {
+                "description": "Percentual SENAT autônomo",
+                "type": "BigDecimal"
+            },
+            "codigoSuspensaoFapsTerceiros": {
+                "description": "Código de suspensão FAPS de terceiros",
+                "type": "Integer"
+            },
+            "numeroProcesso": {
+                "description": "Número do processo",
+                "type": "String"
+            },
+            "suspensaoRecolhimento": {
+                "description": "Suspensão do recolhimento",
+                "type": "String"
+            },
+            "opcaoRegistroPonto": {
+                "description": "Opção de registro do ponto"
+            },
+            "desoneracaoFolha": {
+                "description": "Desoneração da folha"
+            }
+        },
+        "PessoaJuridicaManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "cnpj": {
+                "description": "CNPJ",
+                "type": "String"
+            },
+            "razaoSocial": {
+                "description": "Razão social",
+                "type": "String"
+            }
+        },
+        "EntidadeEducativaEncargosSociaisManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "entidadeEducativa": {
+                "description": "Entidade educativa",
+                "type": "PessoaJuridicaManutencaoEstabelecimento"
+            }
+        },
+        "ConfiguracaoEncargosSociaisDadosProcessuaisManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "tipoProcessoGilRat": {
+                "description": "Tipo de processo GIL RAT"
+            },
+            "numeroProcessoGilRat": {
+                "description": "Número processo GIL RAT",
+                "type": "String"
+            },
+            "suspensaoProcessoGilRat": {
+                "description": "Suspenção processo GIL RAT",
+                "type": "Long"
+            },
+            "tipoProcessoFap": {
+                "description": "Tipo processo FAP"
+            },
+            "numeroProcessoFap": {
+                "description": "Número processo FAP",
+                "type": "String"
+            },
+            "suspensaoProcessoFap": {
+                "description": "Suspensão processo FAP",
+                "type": "Long"
+            },
+            "contratacaoPcd": {
+                "description": "Contratação PCD"
+            },
+            "numeroProcessoPcd": {
+                "description": "Número processo PCD",
+                "type": "String"
+            },
+            "contratacaoMenorAprendiz": {
+                "description": "Contratação menor aprendiz"
+            },
+            "numeroProcessoMenorAprendiz": {
+                "description": "Número processo menor aprendiz",
+                "type": "String"
+            },
+            "porMeioEntidadeEducativa": {
+                "description": "Contratação por meio de entidade educativa",
+                "type": "Boolean"
+            },
+            "entidadesEducativas": {
+                "description": "Entidades educativas",
+                "type": "EntidadeEducativaEncargosSociaisManutencaoEstabelecimento"
+            }
+        },
+        "ConfiguracaoFaixaContribuicaoManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "valorInicial": {
+                "description": "Valor inicial",
+                "type": "BigDecimal"
+            },
+            "aliquota": {
+                "description": "Alíquota",
+                "type": "BigDecimal"
+            }
+        },
+        "ConfiguracaoEncargosSociaisRgpsManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "tabelaContribuicaoSegurado": {
+                "description": "Tabela contribuição do segurado",
+                "type": "ConfiguracaoFaixaContribuicaoManutencaoEstabelecimento"
+            }
+        },
+        "ConfiguracaoFaixaContribuicaoIrrfManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "valorInicial": {
+                "description": "Valor inicial",
+                "type": "BigDecimal"
+            },
+            "aliquota": {
+                "description": "Valor da alíquota",
+                "type": "BigDecimal"
+            },
+            "deducao": {
+                "description": "Valor da dedução",
+                "type": "BigDecimal"
+            }
+        },
+        "ConfiguracaoEncargosSociaisIrrfManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "minimoIrrfDarf": {
+                "description": "Mínimo IRRF DARF",
+                "type": "BigDecimal"
+            },
+            "deducaoPorDependente": {
+                "description": "Dedução por dependente",
+                "type": "BigDecimal"
+            },
+            "parcelaIsentaAposentadoria": {
+                "description": "Parcela isenta da aposentadoria",
+                "type": "BigDecimal"
+            },
+            "tabelaProgressiva": {
+                "description": "Tabela progressiva",
+                "type": "ConfiguracaoFaixaContribuicaoIrrfManutencaoEstabelecimento"
+            }
+        },
+        "BancoManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            }
+        },
+        "AgenciaManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            }
+        },
+        "ConfiguracaoEncargosSociaisFgtsManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "banco": {
+                "description": "Banco",
+                "type": "BancoManutencaoEstabelecimento"
+            },
+            "agencia": {
+                "description": "Agência",
+                "type": "AgenciaManutencaoEstabelecimento"
+            },
+            "multaFgts": {
+                "description": "Multa do FGTS",
+                "type": "BigDecimal"
+            },
+            "codigoFgts": {
+                "description": "Código do FGTS",
+                "type": "String"
+            }
+        },
+        "ConfiguracaoSalarioFamiliaManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "ConfiguracaoSalarioFamiliaId"
+            },
+            "idadeMaximaGeral": {
+                "description": "Idade máxima geral",
+                "type": "Integer"
+            },
+            "idadeMaximaCurso": {
+                "description": "Idade máxima do curso",
+                "type": "Integer"
+            },
+            "idadeMaximaDeficiente": {
+                "description": "Idade máxima deficiente",
+                "type": "Integer"
+            },
+            "tipoPagamentoInvalidez": {
+                "description": "Tipo pagamento invalidez"
+            },
+            "tabelaProgressivaSegurado": {
+                "description": "Tabela progressiva segurado",
+                "type": "ConfiguracaoFaixaContribuicaoManutencaoEstabelecimento"
+            }
+        },
+        "ManutencaoEstabelecimentoConfiguracaoEncargosSociaisFundoPrevidenciaId": {
+            "configuracaoEncargosSociaisId": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "tipo": {
+                "description": "Tipo"
+            }
+        },
+        "ConfiguracaoEncargosSociaisFundoPrevidenciaManutencaoEstabelecimento": {
+            "id": {
+                "type": "ManutencaoEstabelecimentoConfiguracaoEncargosSociaisFundoPrevidenciaId"
+            },
+            "tipoPrevidencia": {},
+            "fundoContribuicaoEntidade": {
+                "description": "Fundo de contribuição da entidade",
+                "type": "BigDecimal"
+            },
+            "taxaAdministrativaContribuicaoEntidade": {
+                "description": "Taxa administrativa contribuição da entidade",
+                "type": "BigDecimal"
+            },
+            "indiceAporteContribuicaoEntidade": {
+                "description": "Índice aporte contribuição entidade",
+                "type": "BigDecimal"
+            },
+            "minimo": {
+                "description": "Valor mínimo",
+                "type": "BigDecimal"
+            },
+            "maximo": {
+                "description": "Valor máximo",
+                "type": "BigDecimal"
+            },
+            "tabelaContribuicaoSegurado": {
+                "description": "Tabela de contribuição do segurado",
+                "type": "ConfiguracaoFaixaContribuicaoManutencaoEstabelecimento"
+            }
+        },
+        "ManutencaoEstabelecimento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "inicioVigencia": {
+                "description": "Início vigência",
+                "type": "YearMonth"
+            },
+            "entidade": {
+                "description": "Identificador da entidade",
+                "type": "Long"
+            },
+            "salarioMinimo": {
+                "description": "Salário mínimo",
+                "type": "BigDecimal"
+            },
+            "pisoSalarial": {
+                "description": "Piso salarial",
+                "type": "BigDecimal"
+            },
+            "tetoSalarial": {
+                "description": "Teto salarial",
+                "type": "BigDecimal"
+            },
+            "ato": {
+                "description": "Ato",
+                "type": "AtoManutencaoEstabelecimento"
+            },
+            "encargosGeral": {
+                "description": "Configuração geral de encargos sociais",
+                "type": "ConfiguracaoEncargosSociaisGeralManutencaoEstabelecimento"
+            },
+            "encargosDadosProcessuais": {
+                "description": "Configuração encargos dados processuais",
+                "type": "ConfiguracaoEncargosSociaisDadosProcessuaisManutencaoEstabelecimento"
+            },
+            "encargosRgps": {
+                "description": "Configuração encargos sociais RGPS",
+                "type": "ConfiguracaoEncargosSociaisRgpsManutencaoEstabelecimento"
+            },
+            "encargosIrrf": {
+                "description": "Configuração encargos sociais IRRF",
+                "type": "ConfiguracaoEncargosSociaisIrrfManutencaoEstabelecimento"
+            },
+            "encargosFgts": {
+                "description": "Configuração encargos sociais FGTS",
+                "type": "ConfiguracaoEncargosSociaisFgtsManutencaoEstabelecimento"
+            },
+            "encargosSalarioFamilia": {
+                "description": "Configuração salário família",
+                "type": "ConfiguracaoSalarioFamiliaManutencaoEstabelecimento"
+            },
+            "encargosFundoPrevidencias": {
+                "description": "Configuração encargos sociais do fundo de previdência",
+                "type": "ConfiguracaoEncargosSociaisFundoPrevidenciaManutencaoEstabelecimento"
+            },
+            "previdencias": {
+                "description": "Configuração encargos sociais do fundo de previdência",
+                "type": "ConfiguracaoEncargosSociaisFundoPrevidenciaManutencaoEstabelecimento"
+            }
+        }
+    },
+    "codeExample": "fonteManutencaoEstabelecimento = Dados.pessoal.v2.manutencaoEstabelecimento;\n\ndadosManutencaoEstabelecimento = fonteManutencaoEstabelecimento.busca(campos: \"id, inicioVigencia, entidade, salarioMinimo, pisoSalarial, tetoSalarial, encargosRgps(tabelaContribuicaoSegurado(id, valorInicial, aliquota), id), encargosIrrf(tabelaProgressiva(id, valorInicial, aliquota, deducao), id, minimoIrrfDarf, deducaoPorDependente, parcelaIsentaAposentadoria), encargosFgts(banco(id, nome), agencia(id, nome), id, multaFgts, codigoFgts)\")\n\npercorrer (dadosManutencaoEstabelecimento) { itemManutencaoEstabelecimento ->\n\n}",
+    "description": "Manutenção de estabelecimento",
+    "name": "manutencaoEstabelecimento"
+}

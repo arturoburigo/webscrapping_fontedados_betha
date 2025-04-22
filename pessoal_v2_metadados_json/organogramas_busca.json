@@ -1,0 +1,357 @@
+{
+    "representation": {
+        "type": "OrganogramaFonteDados",
+        "defaultFields": [
+            "id",
+            "descricao"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de organogramas",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "sigla": {
+            "description": "Sigla",
+            "type": "String"
+        },
+        "numero": {
+            "description": "Número",
+            "type": "String"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "nivel": {
+            "description": "Nível",
+            "type": "Integer"
+        },
+        "configuracao.emUso": {
+            "description": "Configuração está em uso?",
+            "type": "Boolean"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "ConfiguracaoNivelOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "nivelSecretaria": {
+                "description": "Nível secretaria?",
+                "type": "Boolean"
+            },
+            "nivel": {
+                "description": "Nível da secretaria",
+                "type": "Integer"
+            },
+            "quantidadeDigitos": {
+                "description": "Quantidade de dígitos",
+                "type": "Integer"
+            },
+            "separador": {
+                "description": "Separador de nível"
+            }
+        },
+        "ConfiguracaoOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "emUso": {
+                "description": "Configuração está em uso?",
+                "type": "Boolean"
+            },
+            "niveis": {
+                "description": "Níveis",
+                "type": "ConfiguracaoNivelOrganograma"
+            }
+        },
+        "TipoAdministracao": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "naturezaJuridica": {
+                "description": "Natureza Jurídica"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "subteto": {
+                "description": "Valor do Subteto",
+                "type": "BigDecimal"
+            }
+        },
+        "TipoLogradouroOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "abreviatura": {
+                "description": "Abreviatura",
+                "type": "String"
+            }
+        },
+        "LogradouroOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipoLogradouro": {
+                "description": "Tipo",
+                "type": "TipoLogradouroOrganograma"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "EstadoPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "uf": {
+                "description": "UF",
+                "type": "String"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "pais": {
+                "description": "País",
+                "type": "String"
+            }
+        },
+        "MunicipioPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "estado": {
+                "description": "Estado",
+                "type": "EstadoPessoaFisica"
+            }
+        },
+        "BairroOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "MunicipioPessoaFisica"
+            }
+        },
+        "Endereco": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "logradouro": {
+                "description": "Logradouro",
+                "type": "LogradouroOrganograma"
+            },
+            "bairro": {
+                "description": "Bairro",
+                "type": "BairroOrganograma"
+            },
+            "cep": {
+                "description": "CEP",
+                "type": "String"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "complemento": {
+                "description": "Complemento",
+                "type": "String"
+            },
+            "descricao": {
+                "description": "Complemento",
+                "type": "String"
+            }
+        },
+        "CargoOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "codigoESocial": {
+                "description": "Código ESocial",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo",
+                "type": "TipoCargo"
+            }
+        },
+        "FuncaoOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "AtoOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipo": {
+                "description": "Tipo de ato",
+                "type": "TipoAto"
+            },
+            "numeroOficial": {
+                "description": "Número oficial",
+                "type": "String"
+            }
+        },
+        "OrganogramaResponsavelFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "dataInicio": {
+                "description": "Data de início da responsabilidade",
+                "type": "LocalDate"
+            },
+            "dataTermino": {
+                "description": "Data de término da responsabilidade",
+                "type": "LocalDate"
+            },
+            "substituto": {
+                "description": "É substituto?",
+                "type": "Boolean"
+            },
+            "cargo": {
+                "description": "Cargo",
+                "type": "CargoOrganograma"
+            },
+            "funcaoGratificada": {
+                "description": "Função gratificada",
+                "type": "FuncaoOrganograma"
+            },
+            "ato": {
+                "description": "Ato da responsabilidade",
+                "type": "AtoOrganograma"
+            },
+            "tipoMatricula": {
+                "description": "Tipo da matrícula"
+            },
+            "nome": {
+                "description": "Nome do responsável",
+                "type": "String"
+            },
+            "idPessoa": {
+                "description": "Id da pessoa do responsável",
+                "type": "Long"
+            },
+            "cpf": {
+                "description": "CPF do responsável",
+                "type": "String"
+            }
+        },
+        "OrganogramaFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "configuracao": {
+                "description": "Configuração de organograma",
+                "type": "ConfiguracaoOrganograma"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "nivel": {
+                "description": "Nível",
+                "type": "Integer"
+            },
+            "tipoAdministracao": {
+                "description": "Tipo de Administração",
+                "type": "TipoAdministracao"
+            },
+            "endereco": {
+                "description": "Endereço",
+                "type": "Endereco"
+            },
+            "responsavel": {
+                "description": "Responsável vigente",
+                "type": "OrganogramaResponsavelFonteDados"
+            },
+            "camposAdicionais": {
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5e597582848c9f0166555457"
+                }
+            }
+        }
+    },
+    "codeExample": "fonteOrganogramas = Dados.pessoal.v2.organogramas;\n\ndadosOrganogramas = fonteOrganogramas.busca(campos: \"id, descricao\")\n\npercorrer (dadosOrganogramas) { itemOrganogramas ->\n\n}",
+    "description": "Organogramas",
+    "name": "organogramas"
+}

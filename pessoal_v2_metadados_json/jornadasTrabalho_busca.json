@@ -1,0 +1,239 @@
+{
+    "representation": {
+        "type": "JornadaTrabalhoFonteDadosCompleta",
+        "defaultFields": [
+            "codigo",
+            "tipo",
+            "inicioVigencia",
+            "enviarESocial",
+            "id",
+            "descricao"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de jornada de trabalho",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "tipo": {
+            "description": "Tipo da jornada"
+        },
+        "inicioVigencia": {
+            "description": "Início da vigência",
+            "type": "LocalDateTime"
+        },
+        "enviarESocial": {
+            "description": "tipo de valor que sera enviado ao eSocial"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        }
+    },
+    "types": {
+        "HorarioMarcacao": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "hora": {
+                "description": "Horário",
+                "type": "LocalTime"
+            }
+        },
+        "HorarioIntervalo": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "entrada": {
+                "description": "Horário de entrada",
+                "type": "LocalTime"
+            },
+            "saida": {
+                "description": "Horário de saída",
+                "type": "LocalTime"
+            }
+        },
+        "Horario": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "codigo": {
+                "description": "Código",
+                "type": "String"
+            },
+            "entrada": {
+                "type": "LocalTime"
+            },
+            "saida": {
+                "type": "LocalTime"
+            },
+            "cargaHoraria": {
+                "description": "Carga horária",
+                "type": "BigDecimal"
+            },
+            "marcacoes": {
+                "description": "Marcações",
+                "type": "HorarioMarcacao"
+            },
+            "intervalos": {
+                "type": "HorarioIntervalo"
+            }
+        },
+        "PeriodoJornadaTrabalho": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "dia": {
+                "description": "Dia",
+                "type": "Integer"
+            },
+            "horario": {
+                "description": "Horário",
+                "type": "Horario"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "JornadaTrabalhoFonteDadosAssociacao": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "cargaHorariaSemanal": {
+                "description": "Carga horária semanal",
+                "type": "Duration"
+            },
+            "periodos": {
+                "description": "Períodos",
+                "type": "PeriodoJornadaTrabalho"
+            }
+        },
+        "JornadaTrabalhoEscala": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "sequencia": {
+                "description": "Sequência",
+                "type": "Long"
+            },
+            "jornadaTrabalho": {
+                "description": "Jornada de trabalho",
+                "type": "JornadaTrabalhoFonteDadosAssociacao"
+            },
+            "cor": {
+                "description": "Cor",
+                "type": "String"
+            }
+        },
+        "Escala": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo da escala"
+            },
+            "jornadaTrabalhoEscalas": {
+                "description": "Jornadas",
+                "type": "JornadaTrabalhoEscala"
+            }
+        },
+        "JornadaTrabalhoFonteDadosCompleta": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "codigo": {
+                "description": "Código",
+                "type": "String"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "inicioVigencia": {
+                "description": "Início da vigência",
+                "type": "LocalDateTime"
+            },
+            "tipo": {
+                "description": "Tipo da jornada"
+            },
+            "enviarESocial": {
+                "description": "tipo de valor que sera enviado ao eSocial"
+            },
+            "horarioNoturno": {
+                "description": "Horario noturno",
+                "type": "Boolean"
+            },
+            "tipoCompensacao": {
+                "description": "Compensação"
+            },
+            "cargaHorariaSemanal": {
+                "description": "Carga horária semanal",
+                "type": "String"
+            },
+            "desativado": {
+                "description": "Desativado",
+                "type": "Boolean"
+            },
+            "periodos": {
+                "description": "Períodos",
+                "type": "PeriodoJornadaTrabalho"
+            },
+            "revezamento": {
+                "description": "Revezamento",
+                "type": "Boolean"
+            },
+            "tipoDeRevezamento": {
+                "description": "Tipo de revezamento"
+            },
+            "escala": {
+                "description": "Escala",
+                "type": "Escala"
+            },
+            "inicioRevezamento": {
+                "description": "Data de início do revezamento",
+                "type": "LocalDate"
+            },
+            "horasDSR": {
+                "description": "Representa a quatidade de horas DSR",
+                "type": "LocalTime"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5e3857491f98c701685cbb30"
+                }
+            }
+        }
+    },
+    "codeExample": "fonteJornadasTrabalho = Dados.pessoal.v2.jornadasTrabalho;\n\nfiltroJornadasTrabalho = \"inicioVigencia >= 2015-09-09\"\n\ndadosJornadasTrabalho = fonteJornadasTrabalho.busca(criterio: filtroJornadasTrabalho,campos: \"id, codigo, descricao, inicioVigencia, tipo, enviarESocial, tipoCompensacao\",ordenacao: \"inicioVigencia asc\")\n\npercorrer (dadosJornadasTrabalho) { itemJornadasTrabalho ->\n\n}",
+    "description": "Jornadas de trabalho",
+    "name": "jornadasTrabalho"
+}

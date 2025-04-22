@@ -1,0 +1,67 @@
+{
+    "representation": {
+        "type": "TipoMovimentacaoPessaolFonteDados",
+        "defaultFields": [
+            "classificacao",
+            "id",
+            "descricao"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de tipo de movimentos pessoal",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "classificacao": {
+            "description": "Classificacao"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "descricao": {
+            "description": "Descricao",
+            "type": "String"
+        }
+    },
+    "types": {
+        "TipoMovimentacaoPessaolFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descricao",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificacao"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5bfedd51b21c82015a8fb881"
+                }
+            }
+        }
+    },
+    "codeExample": "fonteTipoMovimentacaoPessoal = Dados.pessoal.v2.tipoMovimentacaoPessoal;\n\ndadosTipoMovimentacaoPessoal = fonteTipoMovimentacaoPessoal.busca(campos: \"id, descricao, classificacao\",ordenacao: \"classificacao asc\")\n\npercorrer (dadosTipoMovimentacaoPessoal) { itemTipoMovimentacaoPessoal ->\n\n}",
+    "description": "Tipo Movimentação Pessoal",
+    "name": "tipoMovimentacaoPessoal"
+}

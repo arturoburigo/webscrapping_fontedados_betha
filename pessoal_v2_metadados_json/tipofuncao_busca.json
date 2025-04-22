@@ -1,0 +1,51 @@
+{
+    "representation": {
+        "type": "TipoFuncao",
+        "defaultFields": []
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de tipo de função",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            },
+            "selecaoAvancada": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "id": {
+            "type": "Long"
+        },
+        "descricao": {
+            "type": "String"
+        }
+    },
+    "types": {
+        "TipoFuncao": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            },
+            "classificacaoTipoFuncao": {},
+            "tipoFuncaoGratificada": {}
+        }
+    },
+    "codeExample": "fonteTipofuncao = Dados.pessoal.v2.tipofuncao;\n\ndadosTipofuncao = fonteTipofuncao.busca(campos: \"id, descricao, classificacaoTipoFuncao, tipoFuncaoGratificada\",ordenacao: \"descricao asc\")\n\npercorrer (dadosTipofuncao) { itemTipofuncao ->\n\n}",
+    "description": "Tipo de Funções",
+    "name": "tipofuncao"
+}

@@ -1,0 +1,95 @@
+{
+    "representation": {
+        "type": "QuadroCargo",
+        "defaultFields": []
+    },
+    "method": {
+        "name": "buscaTodos",
+        "verb": "GET",
+        "description": "Lista todos",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "inicioVigencia": {
+            "type": "LocalDateTime"
+        },
+        "descricao": {
+            "type": "String"
+        }
+    },
+    "types": {
+        "TipoAto": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "AtoMatriculaAssociacao": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "numeroOficial": {
+                "description": "Número oficial",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo de ato",
+                "type": "TipoAto"
+            },
+            "ementa": {
+                "description": "Ementa",
+                "type": "String"
+            }
+        },
+        "QuadroCargo": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            },
+            "inicioVigencia": {
+                "type": "LocalDateTime"
+            },
+            "percentualMinimo": {
+                "type": "Integer"
+            },
+            "atoCriacao": {
+                "type": "AtoMatriculaAssociacao"
+            },
+            "atoPercentualMinimo": {
+                "type": "AtoMatriculaAssociacao"
+            },
+            "extinto": {
+                "type": "Boolean"
+            },
+            "campoAdicional": {
+                "type": "CampoAdicionalDto"
+            }
+        }
+    },
+    "codeExample": "fonteQuardoCargos = Dados.pessoal.v2.quardoCargos;\n\ndadosQuardoCargos = fonteQuardoCargos.buscaTodos(campos: \"id, percentualMinimo, extinto, campoAdicional, inicioVigencia, descricao, atoCriacao(tipo(id, descricao, classificacao), id, numeroOficial, ementa)\",ordenacao: \"inicioVigencia asc\")\n\npercorrer (dadosQuardoCargos) { itemQuardoCargos ->\n\n}",
+    "description": "Quadro de cargos",
+    "name": "quadroCargos"
+}

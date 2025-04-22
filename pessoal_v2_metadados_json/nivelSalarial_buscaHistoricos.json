@@ -1,0 +1,374 @@
+{
+    "representation": {
+        "type": "NivelSalarialCompletaComHistorico",
+        "defaultFields": [
+            "dataHoraCriacao",
+            "id",
+            "cargaHoraria",
+            "descricao"
+        ]
+    },
+    "method": {
+        "name": "buscaHistoricos",
+        "verb": "GET",
+        "description": "Listagem de históricos de níveis salariais",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "origem.id": {
+            "description": "Id da Origem do nível salarial ",
+            "type": "Long"
+        },
+        "planoCargoSalario.descricao": {
+            "description": "Descrição do plano de cargos e salários",
+            "type": "String"
+        },
+        "dataHoraCriacao": {
+            "description": "Data de criação",
+            "type": "LocalDateTime"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "cargaHoraria": {
+            "description": "Carga horária",
+            "type": "BigDecimal"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "NivelSalarialReajusteSalarialFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "dataAlteracao": {
+                "description": "Data da alteração",
+                "type": "LocalDateTime"
+            },
+            "truncarValor": {
+                "description": "Se trunca o valor",
+                "type": "Boolean"
+            },
+            "correcao": {
+                "description": "Correção"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "situacao": {
+                "description": "Situação"
+            },
+            "valor": {
+                "description": "Valor",
+                "type": "BigDecimal"
+            },
+            "totalReajuste": {
+                "description": "Total do reajuste",
+                "type": "BigDecimal"
+            }
+        },
+        "MotivoAlteracaoSalarial": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "NivelSalarialAtoTipoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "NivelSalarialAtoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipo": {
+                "description": "Tipo de ato",
+                "type": "NivelSalarialAtoTipoFonteDados"
+            },
+            "numeroOficial": {
+                "description": "Número oficial",
+                "type": "String"
+            }
+        },
+        "NivelSalarialPlanoCargoSalarioFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "NivelSalarialAssociacao": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "valor": {
+                "description": "Valor",
+                "type": "BigDecimal"
+            }
+        },
+        "NivelSalarialClasseReferenciaFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "classe": {
+                "description": "Classe",
+                "type": "String"
+            },
+            "referencia": {
+                "description": "Referência",
+                "type": "String"
+            },
+            "classeTce": {
+                "description": "ClasseTce",
+                "type": "String"
+            },
+            "referenciaTce": {
+                "description": "ReferênciaTce",
+                "type": "String"
+            },
+            "fatorValor": {
+                "description": "Fator",
+                "type": "BigDecimal"
+            },
+            "ordem": {
+                "description": "Ordem",
+                "type": "Integer"
+            }
+        },
+        "ClasseReferenciaFonteDados": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "ordem": {
+                "description": "Ordem",
+                "type": "Integer"
+            },
+            "classe": {
+                "description": "Classe",
+                "type": "String"
+            },
+            "referencia": {
+                "description": "Referência",
+                "type": "String"
+            },
+            "classeTce": {
+                "description": "Classe TCE",
+                "type": "String"
+            },
+            "referenciaTce": {
+                "description": "Referência TCE",
+                "type": "String"
+            },
+            "valor": {
+                "type": "BigDecimal"
+            }
+        },
+        "CargoRemuneracaoFonteDados": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "classeReferenciaInicial": {
+                "description": "Identificador da classe referência inicial",
+                "type": "ClasseReferenciaFonteDados"
+            },
+            "classeReferenciaFinal": {
+                "description": "Identificador da classe referência final",
+                "type": "ClasseReferenciaFonteDados"
+            },
+            "nivelSalarial": {
+                "description": "Identificador do nível salarial",
+                "type": "NivelSalarialAssociacao"
+            }
+        },
+        "NivelSalarialCompletaFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "cargaHoraria": {
+                "description": "Carga horária",
+                "type": "BigDecimal"
+            },
+            "valor": {
+                "description": "Valor",
+                "type": "BigDecimal"
+            },
+            "coeficiente": {
+                "description": "Coeficiente",
+                "type": "Boolean"
+            },
+            "situacao": {
+                "description": "Situação"
+            },
+            "reajusteSalarial": {
+                "description": "Identificador do reajuste salarial",
+                "type": "NivelSalarialReajusteSalarialFonteDados"
+            },
+            "inicioVigencia": {
+                "description": "Inicio vigência",
+                "type": "LocalDateTime"
+            },
+            "motivoAlteracao": {
+                "description": "Identificador do motivo de alteração salarial",
+                "type": "MotivoAlteracaoSalarial"
+            },
+            "dataHoraCriacao": {
+                "description": "Data de criação",
+                "type": "LocalDateTime"
+            },
+            "atoCriacao": {
+                "description": "Ato de criação",
+                "type": "NivelSalarialAtoFonteDados"
+            },
+            "planoCargoSalario": {
+                "description": "Plano de cargos e salários",
+                "type": "NivelSalarialPlanoCargoSalarioFonteDados"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "59ca6684a35f9200eb27c18e"
+                }
+            },
+            "classesReferencias": {
+                "description": "Classes e referências",
+                "type": "NivelSalarialClasseReferenciaFonteDados"
+            },
+            "remuneracoes": {
+                "description": "Remunerações",
+                "type": "CargoRemuneracaoFonteDados"
+            }
+        },
+        "NivelSalarialCompletaComHistorico": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "cargaHoraria": {
+                "description": "Carga horária",
+                "type": "BigDecimal"
+            },
+            "valor": {
+                "description": "Valor",
+                "type": "BigDecimal"
+            },
+            "coeficiente": {
+                "description": "Coeficiente",
+                "type": "Boolean"
+            },
+            "situacao": {
+                "description": "Situação"
+            },
+            "reajusteSalarial": {
+                "description": "Identificador do reajuste salarial",
+                "type": "NivelSalarialReajusteSalarialFonteDados"
+            },
+            "inicioVigencia": {
+                "description": "Inicio vigência",
+                "type": "LocalDateTime"
+            },
+            "motivoAlteracao": {
+                "description": "Identificador do motivo de alteração salarial",
+                "type": "MotivoAlteracaoSalarial"
+            },
+            "dataHoraCriacao": {
+                "description": "Data de criação",
+                "type": "LocalDateTime"
+            },
+            "atoCriacao": {
+                "description": "Ato de criação",
+                "type": "NivelSalarialAtoFonteDados"
+            },
+            "ultimoAto": {
+                "description": "Último ato",
+                "type": "NivelSalarialAtoFonteDados"
+            },
+            "planoCargoSalario": {
+                "description": "Plano de cargos e salários",
+                "type": "NivelSalarialPlanoCargoSalarioFonteDados"
+            },
+            "isHistorico": {
+                "description": "Registro é histórico?",
+                "type": "Boolean"
+            },
+            "origem": {
+                "description": "origem",
+                "type": "NivelSalarialAssociacao"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "59ca6684a35f9200eb27c18e"
+                }
+            },
+            "classesReferencias": {
+                "description": "Classes e referências",
+                "type": "NivelSalarialClasseReferenciaFonteDados"
+            },
+            "remuneracoes": {
+                "description": "Remunerações",
+                "type": "CargoRemuneracaoFonteDados"
+            },
+            "historicos": {
+                "description": "Históricos",
+                "type": "NivelSalarialCompletaFonteDados"
+            }
+        }
+    },
+    "codeExample": "fonteNivelSalarial = Dados.pessoal.v2.nivelSalarial;\n\nfiltroNivelSalarial = \"dataHoraCriacao = null\"\n\ndadosNivelSalarial = fonteNivelSalarial.buscaHistoricos(criterio: filtroNivelSalarial,campos: \"id, descricao, cargaHoraria, dataHoraCriacao, situacao, valor, origem(id, descricao, valor), atoCriacao(tipo(id, descricao, classificacao), id, numeroOficial), motivoAlteracao(id, descricao), reajusteSalarial(id, dataAlteracao, truncarValor, correcao, tipo, situacao, valor, totalReajuste)\",ordenacao: \"descricao asc\")\n\npercorrer (dadosNivelSalarial) { itemNivelSalarial ->\n\n}",
+    "description": "NivelSalarial",
+    "name": "nivelSalarial"
+}

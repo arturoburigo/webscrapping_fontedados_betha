@@ -1,0 +1,55 @@
+{
+    "representation": {
+        "type": "NaturezaTextoJuridico",
+        "defaultFields": [
+            "descricao"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de naturezas de texto jurídicos de atos",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "NaturezaTextoJuridico": {
+            "id": {
+                "description": "id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5b51f86a3fca69012e054b8c"
+                }
+            }
+        }
+    },
+    "codeExample": "fonteNaturezasTextoJuridicos = Dados.pessoal.v2.naturezasTextoJuridicos;\n\nfiltroNaturezasTextoJuridicos = \"descricao = null\"\n\ndadosNaturezasTextoJuridicos = fonteNaturezasTextoJuridicos.busca(criterio: filtroNaturezasTextoJuridicos,campos: \"camposAdicionais(padrao(codigo_tce)), id, descricao\",ordenacao: \"descricao asc\")\n\npercorrer (dadosNaturezasTextoJuridicos) { itemNaturezasTextoJuridicos ->\n\n}",
+    "description": "Naturezas de texto jurídicos de atos",
+    "name": "naturezasTextoJuridicos"
+}

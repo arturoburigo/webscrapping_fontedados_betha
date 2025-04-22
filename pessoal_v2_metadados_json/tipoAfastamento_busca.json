@@ -1,0 +1,148 @@
+{
+    "representation": {
+        "type": "TipoAfastamentoFonteDados",
+        "defaultFields": [
+            "perdeTempoServico",
+            "reduz13Salario",
+            "consideraVencimento",
+            "reduzFerias",
+            "reduzFgts",
+            "classificacao",
+            "diasPrevistos",
+            "descricao"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de tipos de afastamentos",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "reduz13Salario": {
+            "description": "Reduz 13º salário?",
+            "type": "Boolean"
+        },
+        "perdeTempoServico": {
+            "description": "Perde tempo de serviço?",
+            "type": "Boolean"
+        },
+        "consideraVencimento": {
+            "description": "Considera vencimentos?",
+            "type": "Boolean"
+        },
+        "reduzFgts": {
+            "description": "Reduz FGTS?",
+            "type": "Boolean"
+        },
+        "reduzFerias": {
+            "description": "Reduz férias?",
+            "type": "Boolean"
+        },
+        "tipoMovimentacaoPessoal.id": {
+            "description": "Id do tipo de movimentação pessoal",
+            "type": "Long"
+        },
+        "classificacao": {
+            "description": "Classificação"
+        },
+        "id": {
+            "description": "Identificador",
+            "type": "Long"
+        },
+        "tipoMovimentacaoPessoal.descricao": {
+            "description": "Descrição do tipo de movimentação pessoal",
+            "type": "String"
+        },
+        "diasPrevistos": {
+            "description": "Dias previstos",
+            "type": "Integer"
+        },
+        "tipoMovimentacaoPessoal.classificacao": {
+            "description": "Classificação do tipo de movimentação pessoal"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "TipoMovimentacaoPessoalTipoAfastamento": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "TipoAfastamentoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            },
+            "tipoMovimentacaoPessoal": {
+                "description": "Tipo de movimentação pessoal",
+                "type": "TipoMovimentacaoPessoalTipoAfastamento"
+            },
+            "diasPrevistos": {
+                "description": "Dias previstos",
+                "type": "Integer"
+            },
+            "consideraVencimento": {
+                "description": "Considera vencimentos?",
+                "type": "Boolean"
+            },
+            "perdeTempoServico": {
+                "description": "Perde tempo de serviço?",
+                "type": "Boolean"
+            },
+            "reduz13Salario": {
+                "description": "Reduz 13º salário?",
+                "type": "Boolean"
+            },
+            "reduzFerias": {
+                "description": "Reduz férias?",
+                "type": "Boolean"
+            },
+            "reduzFgts": {
+                "description": "Reduz FGTS?",
+                "type": "Boolean"
+            },
+            "camposAdicionais": {
+                "description": "Campos Adicionais",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "599ae12e2b021100ea829a77"
+                }
+            }
+        }
+    },
+    "codeExample": "fonteTipoAfastamento = Dados.pessoal.v2.tipoAfastamento;\n\ndadosTipoAfastamento = fonteTipoAfastamento.busca(campos: \"descricao, classificacao, diasPrevistos, consideraVencimento, perdeTempoServico, reduz13Salario, reduzFerias, reduzFgts, id, tipoMovimentacaoPessoal(id, descricao, classificacao)\",ordenacao: \"classificacao asc\")\n\npercorrer (dadosTipoAfastamento) { itemTipoAfastamento ->\n\n}",
+    "description": "TipoAfastamento",
+    "name": "tipoAfastamento"
+}

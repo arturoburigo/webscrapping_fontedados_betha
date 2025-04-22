@@ -1,0 +1,58 @@
+{
+    "representation": {
+        "type": "FonteDivulgacao",
+        "defaultFields": [
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de fontes de divulgação",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "id": {
+            "description": "id",
+            "type": "Long"
+        },
+        "meioComunicacao": {
+            "description": "Meio de comunicação"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "FonteDivulgacao": {
+            "id": {
+                "description": "id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "meioComunicacao": {
+                "description": "Meio de comunicação"
+            }
+        }
+    },
+    "codeExample": "fonteFontesDivulgacao = Dados.pessoal.v2.fontesDivulgacao;\n\ndadosFontesDivulgacao = fonteFontesDivulgacao.busca(campos: \"id, descricao, meioComunicacao\",ordenacao: \"id asc\")\n\npercorrer (dadosFontesDivulgacao) { itemFontesDivulgacao ->\n\n}",
+    "description": "Fontes de divulgação",
+    "name": "fontesDivulgacao"
+}

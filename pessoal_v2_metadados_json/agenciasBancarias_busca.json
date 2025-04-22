@@ -1,0 +1,280 @@
+{
+    "representation": {
+        "type": "AgenciaBancaria",
+        "defaultFields": [
+            "numero",
+            "nome",
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de agências bancárias",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "bairro.id": {
+            "description": "Id do bairro",
+            "type": "Long"
+        },
+        "numeroEndereco": {
+            "description": "Número do endereço",
+            "type": "String"
+        },
+        "bairro.municipio.id": {
+            "description": "Id do município",
+            "type": "Long"
+        },
+        "banco.id": {
+            "description": "Id do banco",
+            "type": "Long"
+        },
+        "numero": {
+            "description": "Número",
+            "type": "String"
+        },
+        "logradouro.id": {
+            "description": "Id do logradouro",
+            "type": "Long"
+        },
+        "nome": {
+            "description": "Nome",
+            "type": "String"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "digito": {
+            "description": "Dígito",
+            "type": "String"
+        },
+        "cep": {
+            "description": "CEP",
+            "type": "String"
+        }
+    },
+    "types": {
+        "Banco": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "numeroBanco": {
+                "description": "Número",
+                "type": "String"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "cnpj": {
+                "description": "CNPJ",
+                "type": "String"
+            },
+            "site": {
+                "description": "Site",
+                "type": "String"
+            },
+            "associadoFebraban": {
+                "description": "Associado ao Febraban",
+                "type": "Boolean"
+            }
+        },
+        "Pais": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla2C": {
+                "description": "Sigla ISO-2",
+                "type": "String"
+            },
+            "sigla3C": {
+                "description": "Sigla ISO-3",
+                "type": "String"
+            },
+            "sigla3D": {
+                "description": "Sigla 3D",
+                "type": "String"
+            },
+            "codigoBacen": {
+                "description": "Código no BACEN/IBGE",
+                "type": "String"
+            },
+            "codigoEsocial": {
+                "description": "Código no eSocial",
+                "type": "String"
+            }
+        },
+        "Estado": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Integer"
+            },
+            "pais": {
+                "description": "País",
+                "type": "Pais"
+            }
+        },
+        "Municipio": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "estado": {
+                "description": "Estado",
+                "type": "Estado"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Long"
+            },
+            "codigoSiafi": {
+                "description": "Código no SIAFI",
+                "type": "Long"
+            },
+            "cep": {
+                "description": "CEP geral",
+                "type": "Long"
+            }
+        },
+        "TipoLogradouro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "abreviatura": {
+                "description": "Abreviatura",
+                "type": "String"
+            }
+        },
+        "Logradouro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "Municipio"
+            },
+            "tipoLogradouro": {
+                "description": "Tipo",
+                "type": "TipoLogradouro"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "cep": {
+                "description": "CEP principal",
+                "type": "String"
+            }
+        },
+        "Bairro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "Municipio"
+            },
+            "zonaRural": {
+                "description": "Zona rural",
+                "type": "Boolean"
+            }
+        },
+        "AgenciaBancaria": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "banco": {
+                "description": "Banco",
+                "type": "Banco"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "digito": {
+                "description": "Dígito",
+                "type": "String"
+            },
+            "logradouro": {
+                "description": "Logradouro",
+                "type": "Logradouro"
+            },
+            "numeroEndereco": {
+                "description": "Número do endereço",
+                "type": "String"
+            },
+            "bairro": {
+                "description": "Bairro",
+                "type": "Bairro"
+            },
+            "cep": {
+                "description": "CEP",
+                "type": "String"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "Municipio"
+            }
+        }
+    },
+    "codeExample": "fonteAgenciasBancarias = Dados.pessoal.v2.agenciasBancarias;\n\nfiltroAgenciasBancarias = \"id = null\"\n\ndadosAgenciasBancarias = fonteAgenciasBancarias.busca(criterio: filtroAgenciasBancarias,campos: \"id, nome, numero\",ordenacao: \"id asc\")\n\npercorrer (dadosAgenciasBancarias) { itemAgenciasBancarias ->\n\n}",
+    "description": "Agências bancárias",
+    "name": "agenciasBancarias"
+}

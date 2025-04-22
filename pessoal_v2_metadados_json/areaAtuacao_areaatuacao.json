@@ -1,0 +1,85 @@
+{
+    "representation": {
+        "type": "AreaAtuacao",
+        "defaultFields": []
+    },
+    "method": {
+        "name": "buscatodos",
+        "verb": "GET",
+        "description": "Listagem de Area de atuação",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "id": {
+            "type": "Long",
+            "sort": "false"
+        },
+        "descricao": {
+            "type": "String",
+            "sort": "false"
+        }
+    },
+    "types": {
+        "Cbo": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "codigoClassificacao": {
+                "description": "Código de classificação",
+                "type": "String"
+            }
+        },
+        "AreaAtuacao": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "descricao",
+                "type": "String"
+            },
+            "habilitacao": {
+                "type": "String"
+            },
+            "cbo": {
+                "type": "Cbo"
+            },
+            "requisitos": {
+                "type": "String"
+            },
+            "atividades": {
+                "type": "String"
+            },
+            "cursos": {
+                "type": "Set"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5be95f47027aec012e88b4f5"
+                }
+            }
+        }
+    },
+    "codeExample": "fonteAreaAtuacao = Dados.pessoal.v2.areaAtuacao;\n\nfiltroAreaAtuacao = \"id = null\"\n\ndadosAreaAtuacao = fonteAreaAtuacao.areaatuacao(criterio: filtroAreaAtuacao,campos: \"cbo(id, descricao, codigoClassificacao), id, descricao\")\n\npercorrer (dadosAreaAtuacao) { itemAreaAtuacao ->\n\n}",
+    "description": "Listagem de Areas de atuação",
+    "name": "areaatuacao"
+}

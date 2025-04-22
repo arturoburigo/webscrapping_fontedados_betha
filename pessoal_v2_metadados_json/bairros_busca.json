@@ -1,0 +1,147 @@
+{
+    "representation": {
+        "type": "Bairro",
+        "defaultFields": [
+            "nome",
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de bairros",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "municipio.id": {
+            "description": "Id do município",
+            "type": "Long"
+        },
+        "nome": {
+            "description": "Nome",
+            "type": "String"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "zonaRural": {
+            "description": "Zona rural",
+            "type": "Boolean"
+        }
+    },
+    "types": {
+        "Pais": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla2C": {
+                "description": "Sigla ISO-2",
+                "type": "String"
+            },
+            "sigla3C": {
+                "description": "Sigla ISO-3",
+                "type": "String"
+            },
+            "sigla3D": {
+                "description": "Sigla 3D",
+                "type": "String"
+            },
+            "codigoBacen": {
+                "description": "Código no BACEN/IBGE",
+                "type": "String"
+            },
+            "codigoEsocial": {
+                "description": "Código no eSocial",
+                "type": "String"
+            }
+        },
+        "Estado": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Integer"
+            },
+            "pais": {
+                "description": "País",
+                "type": "Pais"
+            }
+        },
+        "Municipio": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "estado": {
+                "description": "Estado",
+                "type": "Estado"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Long"
+            },
+            "codigoSiafi": {
+                "description": "Código no SIAFI",
+                "type": "Long"
+            },
+            "cep": {
+                "description": "CEP geral",
+                "type": "Long"
+            }
+        },
+        "Bairro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "Municipio"
+            },
+            "zonaRural": {
+                "description": "Zona rural",
+                "type": "Boolean"
+            }
+        }
+    },
+    "codeExample": "fonteBairros = Dados.pessoal.v2.bairros;\n\ndadosBairros = fonteBairros.busca(campos: \"municipio(estado(nome, codigoIbge), nome, id, codigoIbge), id, nome\",ordenacao: \"nome asc\")\n\npercorrer (dadosBairros) { itemBairros ->\n\n}",
+    "description": "Bairros",
+    "name": "bairros"
+}

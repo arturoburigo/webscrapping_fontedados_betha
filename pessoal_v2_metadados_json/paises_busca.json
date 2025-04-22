@@ -1,0 +1,94 @@
+{
+    "representation": {
+        "type": "Pais",
+        "defaultFields": [
+            "nome",
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de países",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "sigla3D": {
+            "description": "Sigla 3D",
+            "type": "String"
+        },
+        "sigla2C": {
+            "description": "Sigla ISO-2",
+            "type": "String"
+        },
+        "codigoEsocial": {
+            "description": "Código no eSocial",
+            "type": "String"
+        },
+        "sigla3C": {
+            "description": "Sigla ISO-3",
+            "type": "String"
+        },
+        "nome": {
+            "description": "Nome",
+            "type": "String"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long",
+            "sort": "false"
+        },
+        "codigoBacen": {
+            "description": "Código no BACEN/IBGE",
+            "type": "String"
+        }
+    },
+    "types": {
+        "Pais": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla2C": {
+                "description": "Sigla ISO-2",
+                "type": "String"
+            },
+            "sigla3C": {
+                "description": "Sigla ISO-3",
+                "type": "String"
+            },
+            "sigla3D": {
+                "description": "Sigla 3D",
+                "type": "String"
+            },
+            "codigoBacen": {
+                "description": "Código no BACEN/IBGE",
+                "type": "String"
+            },
+            "codigoEsocial": {
+                "description": "Código no eSocial",
+                "type": "String"
+            }
+        }
+    },
+    "codeExample": "fontePaises = Dados.pessoal.v2.paises;\n\ndadosPaises = fontePaises.busca(campos: \"id, nome\")\n\npercorrer (dadosPaises) { itemPaises ->\n\n}",
+    "description": "Países",
+    "name": "paises"
+}

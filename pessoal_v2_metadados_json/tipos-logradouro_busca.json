@@ -1,0 +1,60 @@
+{
+    "representation": {
+        "type": "TipoLogradouro",
+        "defaultFields": [
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de tipos de logradouros",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "abreviatura": {
+            "description": "Abreviatura",
+            "type": "String"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "TipoLogradouro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "abreviatura": {
+                "description": "Abreviatura",
+                "type": "String"
+            }
+        }
+    },
+    "codeExample": "fonteTipos-logradouro = Dados.pessoal.v2.tipos-logradouro;\n\ndadosTipos-logradouro = fonteTipos-logradouro.busca(campos: \"id, descricao, abreviatura\")\n\npercorrer (dadosTipos-logradouro) { itemTipos-logradouro ->\n\n}",
+    "description": "Tipo de logradouro",
+    "name": "tipos-logradouro"
+}

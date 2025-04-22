@@ -1,0 +1,703 @@
+{
+    "representation": {
+        "type": "EntidadeEncargosInssFgts",
+        "defaultFields": [
+            "cpfResponsavel",
+            "nome",
+            "cnpj",
+            "telefoneResponsavel",
+            "pisResponsavel",
+            "emailResponsavel",
+            "nomeResponsavel"
+        ]
+    },
+    "method": {
+        "name": "buscaEntidadesMesmoDatabase",
+        "verb": "GET",
+        "description": "Busca as entidades do mesmo database",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "cpfResponsavel": {
+            "description": "CPF do responsável",
+            "type": "String"
+        },
+        "esfera": {
+            "description": "Esfera"
+        },
+        "situacao": {
+            "description": "Situação da entidade"
+        },
+        "sigla": {
+            "description": "Sigla",
+            "type": "String"
+        },
+        "entidadeEducacional": {
+            "description": "Entidade educacional?",
+            "type": "Boolean"
+        },
+        "tipoAdministracao": {
+            "description": "Tipo de administração"
+        },
+        "numeroCertificado": {
+            "description": "Número do certificado",
+            "type": "String"
+        },
+        "horarioFuncionamento": {
+            "description": "Horário de funcionamento",
+            "type": "String"
+        },
+        "siafi": {
+            "description": "Número da UG SIAFI",
+            "type": "Integer"
+        },
+        "cnpj": {
+            "description": "CNPJ",
+            "type": "String"
+        },
+        "telefoneResponsavel": {
+            "description": "Telefone do responsável",
+            "type": "String"
+        },
+        "tributacaoPisCofins": {
+            "description": "Tributação PIS/PASEP",
+            "type": "Boolean"
+        },
+        "dataVencimentoCertificado": {
+            "description": "Data de vencimento do certificado",
+            "type": "LocalDate"
+        },
+        "inicioVigencia": {
+            "description": "Início Vigência",
+            "type": "LocalDateTime"
+        },
+        "cnpjEfr": {
+            "description": "CNPJ do ente federativo",
+            "type": "String"
+        },
+        "naturezaJuridica": {
+            "description": "Natureza jurídica"
+        },
+        "registroEletronicoFuncionario": {
+            "description": "Registro eletrônico de funcionário?",
+            "type": "Boolean"
+        },
+        "fusoHorario": {
+            "description": "Fuso horário"
+        },
+        "numeroProtocoloRenovacao": {
+            "description": "Número do protocolo de renovação",
+            "type": "String"
+        },
+        "id": {
+            "description": "id",
+            "type": "Long"
+        },
+        "pisResponsavel": {
+            "description": "PIS do responsável",
+            "type": "String"
+        },
+        "nomeEfr": {
+            "description": "Nome do ente federativo",
+            "type": "String"
+        },
+        "enteOrcamentarioMesmoBancoDeDados": {
+            "description": "Ente Orcamentario está no mesmo banco de dados",
+            "type": "Boolean"
+        },
+        "enteFederativoMesmoBancoDeDados": {
+            "description": "Ente Federativo Responsável está no mesmo banco de dados",
+            "type": "Boolean"
+        },
+        "enteFederativoResponsavel": {
+            "description": "Ente federativo responsável (EFR)?",
+            "type": "Boolean"
+        },
+        "nome": {
+            "description": "Nome",
+            "type": "String"
+        },
+        "entityId": {
+            "description": "entityId",
+            "type": "Long"
+        },
+        "tetoRemuneratorio": {
+            "description": "Valor teto remuneratório",
+            "type": "BigDecimal"
+        },
+        "classificacaoTributaria": {
+            "description": "Classificação tributária"
+        },
+        "tipoOrgaoPublico": {
+            "description": "Poder / Órgão público"
+        },
+        "rpps": {
+            "description": "Unidade gestora de RPPS?",
+            "type": "Boolean"
+        },
+        "dataProtocoloRenovacao": {
+            "description": "Data do protocolo de renovação",
+            "type": "LocalDate"
+        },
+        "possuiPrevidenciaComplementar": {
+            "description": "Possui previdência complementar?",
+            "type": "Boolean"
+        },
+        "emailResponsavel": {
+            "description": "E-mail do responsável",
+            "type": "String"
+        },
+        "nomeResponsavel": {
+            "description": "Nome do responsável",
+            "type": "String"
+        }
+    },
+    "types": {
+        "TelefonesEntidadeEncargosInssFgts": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "telefonePrincipal": {
+                "description": "Número telefone principal",
+                "type": "String"
+            }
+        },
+        "EmailEntidade": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "emailPrincipal": {
+                "description": "Endereço E-mail principal",
+                "type": "String"
+            }
+        },
+        "Pais": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla2C": {
+                "description": "Sigla ISO-2",
+                "type": "String"
+            },
+            "sigla3C": {
+                "description": "Sigla ISO-3",
+                "type": "String"
+            },
+            "sigla3D": {
+                "description": "Sigla 3D",
+                "type": "String"
+            },
+            "codigoBacen": {
+                "description": "Código no BACEN/IBGE",
+                "type": "String"
+            },
+            "codigoEsocial": {
+                "description": "Código no eSocial",
+                "type": "String"
+            }
+        },
+        "Estado": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Integer"
+            },
+            "pais": {
+                "description": "País",
+                "type": "Pais"
+            }
+        },
+        "Municipio": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "estado": {
+                "description": "Estado",
+                "type": "Estado"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Long"
+            },
+            "codigoSiafi": {
+                "description": "Código no SIAFI",
+                "type": "Long"
+            },
+            "cep": {
+                "description": "CEP geral",
+                "type": "Long"
+            }
+        },
+        "TipoLogradouro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "abreviatura": {
+                "description": "Abreviatura",
+                "type": "String"
+            }
+        },
+        "Logradouro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "Municipio"
+            },
+            "tipoLogradouro": {
+                "description": "Tipo",
+                "type": "TipoLogradouro"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "cep": {
+                "description": "CEP principal",
+                "type": "String"
+            }
+        },
+        "Bairro": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "Municipio"
+            },
+            "zonaRural": {
+                "description": "Zona rural",
+                "type": "Boolean"
+            }
+        },
+        "Endereco": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "logradouro": {
+                "description": "Logradouro",
+                "type": "Logradouro"
+            },
+            "bairro": {
+                "description": "Bairro",
+                "type": "Bairro"
+            },
+            "cep": {
+                "description": "CEP",
+                "type": "String"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "complemento": {
+                "description": "Complemento",
+                "type": "String"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "SindicatoFuncionario": {
+            "tipo": {
+                "description": "Tipo"
+            },
+            "mesContribuicao": {
+                "description": "Mês contribuição"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "diasAviso": {
+                "description": "Dias de aviso",
+                "type": "Integer"
+            },
+            "dataBase": {
+                "description": "Data base",
+                "type": "MonthDay"
+            }
+        },
+        "PessoaJuridica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "razaoSocial": {
+                "description": "Razão social",
+                "type": "String"
+            },
+            "nomeFantasia": {
+                "description": "Nome fantasia",
+                "type": "String"
+            },
+            "cnpj": {
+                "description": "CNPJ",
+                "type": "String"
+            },
+            "codigoInstFinanceira": {
+                "description": "Código Inst. Financeira",
+                "type": "String"
+            },
+            "sindicato": {
+                "description": "Sindicato",
+                "type": "SindicatoFuncionario"
+            }
+        },
+        "TipoAto": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "NaturezaTextoJuridico": {
+            "id": {
+                "description": "id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "AtoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "numeroOficial": {
+                "description": "Número oficial",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo",
+                "type": "TipoAto"
+            },
+            "ementa": {
+                "description": "Ementa",
+                "type": "String"
+            },
+            "naturezaTextoJuridico": {
+                "description": "Natureza do texto jurídico",
+                "type": "NaturezaTextoJuridico"
+            },
+            "dataCriacao": {
+                "description": "Data de criação",
+                "type": "LocalDate"
+            },
+            "dataVigorar": {
+                "description": "Data a vigorar",
+                "type": "LocalDate"
+            },
+            "dataPublicacao": {
+                "description": "Data de publicação",
+                "type": "LocalDate"
+            },
+            "dataResolucao": {
+                "description": "Data de resolução",
+                "type": "LocalDate"
+            },
+            "numeroDiarioOficial": {
+                "description": "Número do diário oficial",
+                "type": "Long"
+            }
+        },
+        "Entidade": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "entityId": {
+                "description": "Identificado Entidade",
+                "type": "Long"
+            },
+            "inicioVigencia": {
+                "description": "Início de vigência",
+                "type": "LocalDateTime"
+            },
+            "nome": {
+                "type": "String"
+            },
+            "cnpj": {
+                "type": "String"
+            }
+        },
+        "EntidadeSoftwareHouseEncargosInssFgts": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome da empresa de software",
+                "type": "String"
+            },
+            "cnpj": {
+                "description": "CNPJ",
+                "type": "String"
+            },
+            "nomeResponsavel": {
+                "description": "Nome do responsável",
+                "type": "String"
+            },
+            "telefone": {
+                "description": "Telefone",
+                "type": "String"
+            },
+            "email": {
+                "description": "E-mail",
+                "type": "String"
+            }
+        },
+        "EntidadeEncargosInssFgts": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "entityId": {
+                "description": "Identificador da Entidade",
+                "type": "Long"
+            },
+            "vigencia": {
+                "type": "YearMonth"
+            },
+            "inicioVigencia": {
+                "description": "Início Vigência",
+                "type": "LocalDateTime"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "cnpj": {
+                "description": "CNPJ",
+                "type": "String"
+            },
+            "nomeResponsavel": {
+                "description": "Nome do responsável",
+                "type": "String"
+            },
+            "cpfResponsavel": {
+                "description": "CPF do responsável",
+                "type": "String"
+            },
+            "telefoneResponsavel": {
+                "description": "Telefone do responsável",
+                "type": "String"
+            },
+            "emailResponsavel": {
+                "description": "E-mail do responsável",
+                "type": "String"
+            },
+            "pisResponsavel": {
+                "description": "PIS do responsável",
+                "type": "String"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5c7809d9808021012d4ccc7e"
+                }
+            },
+            "telefone": {
+                "description": "Telefones(s)",
+                "type": "TelefonesEntidadeEncargosInssFgts"
+            },
+            "email": {
+                "description": "E-mail(s)",
+                "type": "EmailEntidade"
+            },
+            "endereco": {
+                "description": "Endereço",
+                "type": "Endereco"
+            },
+            "horarioFuncionamento": {
+                "description": "Horário de funcionamento",
+                "type": "String"
+            },
+            "fusoHorario": {
+                "description": "Fuso horário"
+            },
+            "siafi": {
+                "description": "Número da UG SIAFI",
+                "type": "Integer"
+            },
+            "sindicato": {
+                "description": "Sindicato",
+                "type": "PessoaJuridica"
+            },
+            "tipoAdministracao": {
+                "description": "Tipo de administração"
+            },
+            "tipoOrgaoPublico": {
+                "description": "Poder / Órgão público"
+            },
+            "tetoRemuneratorio": {
+                "description": "Valor teto remuneratório",
+                "type": "BigDecimal"
+            },
+            "situacao": {
+                "description": "Situação da entidade"
+            },
+            "naturezaJuridica": {
+                "description": "Natureza jurídica"
+            },
+            "esfera": {
+                "description": "Esfera"
+            },
+            "classificacaoTributaria": {
+                "description": "Classificação tributária"
+            },
+            "tributacaoPisCofins": {
+                "description": "Tributação PIS/PASEP",
+                "type": "Boolean"
+            },
+            "ato": {
+                "description": "Ato",
+                "type": "AtoFonteDados"
+            },
+            "numeroCertificado": {
+                "description": "Número do certificado",
+                "type": "String"
+            },
+            "dataVencimentoCertificado": {
+                "description": "Data de vencimento do certificado",
+                "type": "LocalDate"
+            },
+            "numeroProtocoloRenovacao": {
+                "description": "Número do protocolo de renovação",
+                "type": "String"
+            },
+            "dataProtocoloRenovacao": {
+                "description": "Data do protocolo de renovação",
+                "type": "LocalDate"
+            },
+            "registroEletronicoFuncionario": {
+                "description": "Registro eletrônico de funcionário?",
+                "type": "Boolean"
+            },
+            "entidadeEducacional": {
+                "description": "Entidade educacional?",
+                "type": "Boolean"
+            },
+            "enteFederativoResponsavel": {
+                "description": "Ente federativo responsável (EFR)?",
+                "type": "Boolean"
+            },
+            "nomeEfr": {
+                "description": "Nome do ente federativo",
+                "type": "String"
+            },
+            "cnpjEfr": {
+                "description": "CNPJ do ente federativo",
+                "type": "String"
+            },
+            "municipioEfr": {
+                "description": "Município IBGE do ente federativo",
+                "type": "Municipio"
+            },
+            "rpps": {
+                "description": "Unidade gestora de RPPS?",
+                "type": "Boolean"
+            },
+            "possuiPrevidenciaComplementar": {
+                "description": "Possui previdência complementar?",
+                "type": "Boolean"
+            },
+            "tipoEntidade": {
+                "description": "Tipo de Entidade"
+            },
+            "enteFederativo": {
+                "description": "Ente Federativo Responsável",
+                "type": "Entidade"
+            },
+            "enteFederativoMesmoBancoDeDados": {
+                "description": "Ente Federativo Responsável está no mesmo banco de dados",
+                "type": "Boolean"
+            },
+            "enteOrcamentario": {
+                "description": "Ente Orcamentario",
+                "type": "Entidade"
+            },
+            "enteOrcamentarioMesmoBancoDeDados": {
+                "description": "Ente Orcamentario está no mesmo banco de dados",
+                "type": "Boolean"
+            },
+            "indicativoPertencimentoIrrf": {
+                "description": "Indicador de pertencimento do IRRF",
+                "type": "Boolean"
+            },
+            "softwarehouses": {
+                "description": "Responsáveis pelos softwares",
+                "type": "EntidadeSoftwareHouseEncargosInssFgts"
+            }
+        }
+    },
+    "codeExample": "fonteEntidadesDatabase = Dados.pessoal.v2.entidadesDatabase;\n\ndadosEntidadesDatabase = fonteEntidadesDatabase.buscaEntidadesMesmoDatabase(campos: \"nome, cnpj, nomeResponsavel, cpfResponsavel, emailResponsavel, pisResponsavel, telefoneResponsavel\")\n\npercorrer (dadosEntidadesDatabase) { itemEntidadesDatabase ->\n\n}",
+    "description": "Entidade",
+    "name": "entidade"
+}

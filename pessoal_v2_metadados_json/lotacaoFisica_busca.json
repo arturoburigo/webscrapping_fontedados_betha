@@ -1,0 +1,332 @@
+{
+    "representation": {
+        "type": "LotacaoFisica",
+        "defaultFields": [
+            "responsaveis"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de lotações físicas",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "inicioVigencia": {
+            "description": "Início da vigência",
+            "type": "LocalDateTime"
+        },
+        "numero": {
+            "description": "Número da lotação física",
+            "type": "String"
+        },
+        "profissional.id": {
+            "description": "Identificador de profissional",
+            "type": "Long"
+        },
+        "profissional.nome": {
+            "description": "Nome do profissional",
+            "type": "String"
+        },
+        "id": {
+            "description": "Identificador",
+            "type": "Long",
+            "sort": "false"
+        },
+        "nivel": {
+            "description": "Nível da lotação física",
+            "type": "Integer"
+        },
+        "configuracao.emUso": {
+            "description": "Lotação física em uso",
+            "type": "Boolean"
+        },
+        "localAmbiente": {
+            "description": "Tipo de estabelecimento"
+        },
+        "descricao": {
+            "description": "Descrição da lotação física",
+            "type": "String"
+        }
+    },
+    "types": {
+        "EmpresaResponsavelLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            }
+        },
+        "ConfiguracaoLotacaoFisicaFonteDados": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "emUso": {
+                "description": "Configuração está em uso?",
+                "type": "Boolean"
+            }
+        },
+        "ProfissionalLocatacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            }
+        },
+        "ResponsavelLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "profissional": {
+                "description": "Profissional",
+                "type": "ProfissionalLocatacaoFisica"
+            },
+            "dataInicio": {
+                "description": "Data inicial",
+                "type": "LocalDate"
+            },
+            "dataTermino": {
+                "description": "Data final",
+                "type": "LocalDate"
+            },
+            "substituto": {
+                "description": "É substituto",
+                "type": "Boolean"
+            }
+        },
+        "TelefonesLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "observacao": {
+                "description": "Observação",
+                "type": "String"
+            }
+        },
+        "LogradouroLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição do Logradouro",
+                "type": "String"
+            }
+        },
+        "PaisLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome do país",
+                "type": "String"
+            }
+        },
+        "EstadoLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome do estado",
+                "type": "String"
+            },
+            "uf": {
+                "description": "UF",
+                "type": "String"
+            },
+            "pais": {
+                "description": "País",
+                "type": "PaisLotacaoFisica"
+            }
+        },
+        "MunicipioLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome do município",
+                "type": "String"
+            },
+            "estado": {
+                "description": "Estado",
+                "type": "EstadoLotacaoFisica"
+            }
+        },
+        "BairroLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome do bairro",
+                "type": "String"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "MunicipioLotacaoFisica"
+            }
+        },
+        "EnderecoLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "cep": {
+                "description": "CEP",
+                "type": "String"
+            },
+            "logradouro": {
+                "description": "Logradouro",
+                "type": "LogradouroLotacaoFisica"
+            },
+            "bairro": {
+                "description": "Bairro",
+                "type": "BairroLotacaoFisica"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "complemento": {
+                "description": "Complemento",
+                "type": "String"
+            }
+        },
+        "LotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "numero": {
+                "description": "Número da lotação física",
+                "type": "String"
+            },
+            "descricao": {
+                "description": "Descrição da lotação física",
+                "type": "String"
+            },
+            "inicioVigencia": {
+                "description": "Início da vigência",
+                "type": "LocalDateTime"
+            },
+            "utilizaEpc": {
+                "description": "Utilização EPC"
+            },
+            "localAmbiente": {
+                "description": "Tipo de estabelecimento"
+            },
+            "nivel": {
+                "description": "Nível da lotação física",
+                "type": "Integer"
+            },
+            "representaLocalTrabalho": {
+                "description": "Representa local de trabalho",
+                "type": "Boolean"
+            },
+            "tipoLocal": {
+                "description": "Representa o tipo de local"
+            },
+            "empresaTerceiro": {
+                "description": "Representa a empresa terceira",
+                "type": "EmpresaResponsavelLotacaoFisica"
+            },
+            "configuracao": {
+                "description": "Configuração lotação física",
+                "type": "ConfiguracaoLotacaoFisicaFonteDados"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5be9b6c2027aec012e88b541"
+                }
+            },
+            "responsaveis": {
+                "description": "Responsáveis da lotação física",
+                "type": "ResponsavelLotacaoFisica"
+            },
+            "telefones": {
+                "description": "Telefones da lotação física",
+                "type": "TelefonesLotacaoFisica"
+            },
+            "enderecos": {
+                "description": "Endereços da lotação física",
+                "type": "EnderecoLotacaoFisica"
+            }
+        },
+        "NiveisConfiguracaoLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "nivel": {
+                "description": "Nível",
+                "type": "Integer"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "quantidadeDigitos": {
+                "description": "Quantidade de dígitos",
+                "type": "Integer"
+            },
+            "separador": {
+                "description": "Separador"
+            }
+        },
+        "ConfiguracaoLotacaoFisica": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "emUso": {
+                "description": "Configuração está em uso?",
+                "type": "Boolean"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "niveis": {
+                "description": "Níveis",
+                "type": "NiveisConfiguracaoLotacaoFisica"
+            }
+        }
+    },
+    "codeExample": "fonteLotacaoFisica = Dados.pessoal.v2.lotacaoFisica;\n\ndadosLotacaoFisica = fonteLotacaoFisica.busca(campos: \"responsaveis(profissional(id, nome), id, dataInicio, dataTermino, substituto), numero, id, descricao, inicioVigencia\")\n\npercorrer (dadosLotacaoFisica) { itemLotacaoFisica ->\n\n}",
+    "description": "Lotações físicas",
+    "name": "lotacoesFisicas"
+}

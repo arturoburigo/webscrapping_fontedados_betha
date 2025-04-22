@@ -1,0 +1,66 @@
+{
+    "representation": {
+        "type": "Cbo",
+        "defaultFields": [
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de cbos",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "codigoClassificacao": {
+            "description": "Código de classificação",
+            "type": "String"
+        },
+        "nivel": {
+            "description": "Tipo/Nível"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "Cbo": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "codigoClassificacao": {
+                "description": "Código de classificação",
+                "type": "String"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "nivel": {
+                "description": "Tipo/Nível"
+            }
+        }
+    },
+    "codeExample": "fonteCbos = Dados.pessoal.v2.cbos;\n\nfiltroCbos = \"codigoClassificacao = null\"\n\ndadosCbos = fonteCbos.busca(criterio: filtroCbos,campos: \"id, codigoClassificacao, descricao, nivel\",ordenacao: \"id asc\")\n\npercorrer (dadosCbos) { itemCbos ->\n\n}",
+    "description": "Cbo",
+    "name": "cbos"
+}

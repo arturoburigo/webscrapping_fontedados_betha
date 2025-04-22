@@ -1,0 +1,94 @@
+{
+    "representation": {
+        "type": "Banco",
+        "defaultFields": [
+            "numeroBanco",
+            "nome",
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de bancos",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "numeroBanco": {
+            "description": "Número",
+            "type": "String"
+        },
+        "site": {
+            "description": "Site",
+            "type": "String"
+        },
+        "sigla": {
+            "description": "Sigla",
+            "type": "String"
+        },
+        "associadoFebraban": {
+            "description": "Associado ao Febraban",
+            "type": "Boolean"
+        },
+        "nome": {
+            "description": "Nome",
+            "type": "String"
+        },
+        "cnpj": {
+            "description": "CNPJ",
+            "type": "String"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        }
+    },
+    "types": {
+        "Banco": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "numeroBanco": {
+                "description": "Número",
+                "type": "String"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "cnpj": {
+                "description": "CNPJ",
+                "type": "String"
+            },
+            "site": {
+                "description": "Site",
+                "type": "String"
+            },
+            "associadoFebraban": {
+                "description": "Associado ao Febraban",
+                "type": "Boolean"
+            }
+        }
+    },
+    "codeExample": "fonteBancos = Dados.pessoal.v2.bancos;\n\ndadosBancos = fonteBancos.busca(campos: \"id, nome, numeroBanco, associadoFebraban\",ordenacao: \"numeroBanco asc\")\n\npercorrer (dadosBancos) { itemBancos ->\n\n}",
+    "description": "Bancos",
+    "name": "bancos"
+}

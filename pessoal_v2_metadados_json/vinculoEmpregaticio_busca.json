@@ -1,0 +1,154 @@
+{
+    "representation": {
+        "type": "VinculoEmpregaticioFonteDados",
+        "defaultFields": [
+            "descricaoRegimePrevidenciario",
+            "tipo",
+            "categoriaTrabalhador",
+            "id",
+            "descricao"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de vínculos empregatícios",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "descricaoRegimePrevidenciario": {
+            "description": "Regime previdenciário",
+            "type": "String"
+        },
+        "tipo": {
+            "description": "Tipo do regime trabalhista"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "categoriaTrabalhador.grupoTrabalhador": {},
+        "sefip": {
+            "description": "Categoria da SEFIP"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "VinculoEmpregaticioCategoriaTrabalhadorFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "descricao",
+                "type": "String"
+            },
+            "grupoTrabalhador": {
+                "description": "Grupo de trabalhador"
+            },
+            "codigoESocial": {
+                "description": "Código do eSocial",
+                "type": "String"
+            }
+        },
+        "VinculoEmpregaticioMotivoRescisaoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "VinculoEmpregaticioFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo do regime trabalhista"
+            },
+            "descricaoRegimePrevidenciario": {
+                "description": "Regime previdenciário",
+                "type": "String"
+            },
+            "codigoSefip": {
+                "description": "Código da SEFIF",
+                "type": "String"
+            },
+            "geraRais": {
+                "description": "Gera RAIS?",
+                "type": "Boolean"
+            },
+            "codigoRais": {
+                "description": "Código da RAIS",
+                "type": "String"
+            },
+            "descricaoRais": {
+                "description": "Código da RAIS",
+                "type": "String"
+            },
+            "vinculoTemporario": {
+                "description": "Vínculo temporário?",
+                "type": "Boolean"
+            },
+            "dataFinalObrigatoria": {
+                "description": "Data final obrigatória",
+                "type": "Boolean"
+            },
+            "geraCaged": {
+                "description": "Gera CAGED?",
+                "type": "Boolean"
+            },
+            "geraLicencaPremio": {
+                "description": "Gera liçenca-prêmio?",
+                "type": "Boolean"
+            },
+            "categoriaTrabalhador": {
+                "description": "Categoria do trabalhador",
+                "type": "VinculoEmpregaticioCategoriaTrabalhadorFonteDados"
+            },
+            "motivoRescisao": {
+                "description": "Motivo de rescisão",
+                "type": "VinculoEmpregaticioMotivoRescisaoFonteDados"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5c93d6845e9acd015a83e160"
+                }
+            }
+        }
+    },
+    "codeExample": "fonteVinculoEmpregaticio = Dados.pessoal.v2.vinculoEmpregaticio;\n\nfiltroVinculoEmpregaticio = \"categoriaTrabalhador.grupoTrabalhador = null\"\n\ndadosVinculoEmpregaticio = fonteVinculoEmpregaticio.busca(criterio: filtroVinculoEmpregaticio,campos: \"id, descricao, tipo, descricaoRegimePrevidenciario, categoriaTrabalhador(id, descricao, grupoTrabalhador, codigoESocial), codigoSefip, geraRais, descricaoRais, vinculoTemporario, dataFinalObrigatoria, geraCaged, codigoRais, motivoRescisao(id, descricao, tipo, classificacao)\",ordenacao: \"descricaoRegimePrevidenciario asc\")\n\npercorrer (dadosVinculoEmpregaticio) { itemVinculoEmpregaticio ->\n\n}",
+    "description": "VinculoEmpregaticio",
+    "name": "vinculoEmpregaticio"
+}

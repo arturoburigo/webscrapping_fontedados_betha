@@ -1,0 +1,65 @@
+{
+    "representation": {
+        "type": "TipoAto",
+        "defaultFields": [
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de tipos de ato",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "classificacao": {
+            "description": "Classificação"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "TipoAto": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5bfd3348cf0031015adcf7df"
+                }
+            }
+        }
+    },
+    "codeExample": "fonteTiposAto = Dados.pessoal.v2.tiposAto;\n\ndadosTiposAto = fonteTiposAto.busca(campos: \"id, descricao, classificacao\",ordenacao: \"classificacao asc\")\n\npercorrer (dadosTiposAto) { itemTiposAto ->\n\n}",
+    "description": "Tipo de ato",
+    "name": "tiposAto"
+}

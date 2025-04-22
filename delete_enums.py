@@ -63,7 +63,7 @@ def remove_enums_from_file(file_path):
         return False
 
 def main():
-    input_dir = "folha_v2_metadados_json"
+    input_dir = "pessoal_v2_metadados_json"
     files_processed = 0
     files_modified = 0
     

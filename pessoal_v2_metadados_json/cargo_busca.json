@@ -1,0 +1,870 @@
+{
+    "representation": {
+        "type": "CargoDadosRepresentation",
+        "defaultFields": [
+            "funcao",
+            "planosPrevidencia",
+            "grauInstrucao",
+            "acumuloCargos",
+            "descricao",
+            "pagaDecimoTerceiroSalario",
+            "inicioVigencia",
+            "contagemEspecial",
+            "areasAtuacao",
+            "quantidadeVagasPcd",
+            "id",
+            "quantidadeVagas",
+            "configuracaoLicencaPremio",
+            "dedicacaoExclusiva"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de Cargos",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "pagaDecimoTerceiroSalario": {
+            "description": "Pagamento de decimo terceiro salário",
+            "type": "Boolean"
+        },
+        "inicioVigencia": {
+            "description": "Inicio de vigência",
+            "type": "LocalDateTime"
+        },
+        "origem.id": {
+            "description": "Origem Cargo",
+            "type": "Long"
+        },
+        "grauInstrucao": {
+            "description": "Grau de instrução"
+        },
+        "contagemEspecial": {
+            "description": "Contagem especial"
+        },
+        "acumuloCargos": {
+            "description": "Acumulo de cargos"
+        },
+        "quantidadeVagasPcd": {
+            "description": "Quantidade de vagas PCD",
+            "type": "Long"
+        },
+        "quantidadeVagas": {
+            "description": "Quantidade de vagas",
+            "type": "Long"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "dedicacaoExclusiva": {
+            "description": "Dedicação exclusiva",
+            "type": "Boolean"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "CargoOrigem": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            }
+        },
+        "TipoAto": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "AtoMatriculaAssociacao": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "numeroOficial": {
+                "description": "Número oficial",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo de ato",
+                "type": "TipoAto"
+            },
+            "ementa": {
+                "description": "Ementa",
+                "type": "String"
+            }
+        },
+        "QuadroCargo": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            },
+            "inicioVigencia": {
+                "type": "LocalDateTime"
+            },
+            "percentualMinimo": {
+                "type": "Integer"
+            },
+            "atoCriacao": {
+                "type": "AtoMatriculaAssociacao"
+            },
+            "atoPercentualMinimo": {
+                "type": "AtoMatriculaAssociacao"
+            },
+            "extinto": {
+                "type": "Boolean"
+            },
+            "campoAdicional": {
+                "type": "CampoAdicionalDto"
+            }
+        },
+        "TipoCargo": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            }
+        },
+        "Cbo": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "codigoClassificacao": {
+                "description": "Código de classificação",
+                "type": "String"
+            }
+        },
+        "PlanoPrevidencia": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            },
+            "tipo": {}
+        },
+        "ConfiguracaoLicencaPremio": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            },
+            "lancarLicencaAfastamento": {
+                "type": "Boolean"
+            }
+        },
+        "AreaAtuacao": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            }
+        },
+        "CargoAreaAtuacao": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "quantidadeVagas": {
+                "description": "Quantidade de vagas",
+                "type": "Long"
+            },
+            "quantidadeVagasOcupadas": {
+                "description": "Quantidade de vagas ocupadas",
+                "type": "Long"
+            },
+            "areaAtuacao": {
+                "description": "Identificador da área de atuação",
+                "type": "AreaAtuacao"
+            }
+        },
+        "Funcao": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            }
+        },
+        "CargoDadosRepresentation": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "grauInstrucao": {
+                "description": "Grau de instrução"
+            },
+            "pagaDecimoTerceiroSalario": {
+                "description": "Pagamento de decimo terceiro salário",
+                "type": "Boolean"
+            },
+            "contagemEspecial": {
+                "description": "Contagem especial"
+            },
+            "quantidadeVagas": {
+                "description": "Quantidade de vagas",
+                "type": "Long"
+            },
+            "quantidadeVagasPcd": {
+                "description": "Quantidade de vagas PCD",
+                "type": "Long"
+            },
+            "inicioVigencia": {
+                "description": "Inicio de vigência",
+                "type": "LocalDateTime"
+            },
+            "acumuloCargos": {
+                "description": "Acumulo de cargos"
+            },
+            "dedicacaoExclusiva": {
+                "description": "Dedicação exclusiva",
+                "type": "Boolean"
+            },
+            "origem": {
+                "description": "Identificador do cargo de origem",
+                "type": "CargoOrigem"
+            },
+            "quadroCargos": {
+                "description": "Quadro de cargos",
+                "type": "QuadroCargo"
+            },
+            "tipo": {
+                "description": "Tipo de cargo",
+                "type": "TipoCargo"
+            },
+            "cbo": {
+                "description": "Cbo",
+                "type": "Cbo"
+            },
+            "planosPrevidencia": {
+                "description": "Planos de previdencia do cargo",
+                "type": "PlanoPrevidencia"
+            },
+            "configuracaoLicencaPremio": {
+                "description": "Configuração da licença prêmio",
+                "type": "ConfiguracaoLicencaPremio"
+            },
+            "areasAtuacao": {
+                "description": "Areas de atuação(completa)",
+                "type": "CargoAreaAtuacao"
+            },
+            "funcao": {
+                "description": "Função Gratificada",
+                "type": "Funcao"
+            },
+            "camposAdicionais": {
+                "description": "Campos Adicionais",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "59b807b3dbed8e00dbd91e4a"
+                }
+            }
+        },
+        "CargoSimples": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            },
+            "vagasOcupadas": {
+                "type": "Long"
+            }
+        },
+        "NaturezaTextoJuridico": {
+            "id": {
+                "description": "id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "AtoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "numeroOficial": {
+                "description": "Número oficial",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo",
+                "type": "TipoAto"
+            },
+            "ementa": {
+                "description": "Ementa",
+                "type": "String"
+            },
+            "naturezaTextoJuridico": {
+                "description": "Natureza do texto jurídico",
+                "type": "NaturezaTextoJuridico"
+            },
+            "dataCriacao": {
+                "description": "Data de criação",
+                "type": "LocalDate"
+            },
+            "dataVigorar": {
+                "description": "Data a vigorar",
+                "type": "LocalDate"
+            },
+            "dataPublicacao": {
+                "description": "Data de publicação",
+                "type": "LocalDate"
+            },
+            "dataResolucao": {
+                "description": "Data de resolução",
+                "type": "LocalDate"
+            },
+            "numeroDiarioOficial": {
+                "description": "Número do diário oficial",
+                "type": "Long"
+            }
+        },
+        "TipoMovimentacaoPessoalTipoCargo": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "TipoCargoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            },
+            "tipoMovimentacao": {
+                "description": "Tipo movimentação",
+                "type": "TipoMovimentacaoPessoalTipoCargo"
+            },
+            "tipoMovimentacaoSaida": {
+                "description": "Tipo movimentação de saída",
+                "type": "TipoMovimentacaoPessoalTipoCargo"
+            },
+            "tipoMovimentacaoSubstituto": {
+                "description": "Tipo movimentação do substituto",
+                "type": "TipoMovimentacaoPessoalTipoCargo"
+            },
+            "tipoMovimentacaoSaidaSubstituto": {
+                "description": "Tipo movimentação de saída do substituto",
+                "type": "TipoMovimentacaoPessoalTipoCargo"
+            }
+        },
+        "TipoMovimentacaoPessoalTipoAfastamento": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "TipoAfastamentoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            },
+            "tipoMovimentacaoPessoal": {
+                "description": "Tipo de movimentação pessoal",
+                "type": "TipoMovimentacaoPessoalTipoAfastamento"
+            },
+            "diasPrevistos": {
+                "description": "Dias previstos",
+                "type": "Integer"
+            },
+            "consideraVencimento": {
+                "description": "Considera vencimentos?",
+                "type": "Boolean"
+            },
+            "perdeTempoServico": {
+                "description": "Perde tempo de serviço?",
+                "type": "Boolean"
+            },
+            "reduz13Salario": {
+                "description": "Reduz 13º salário?",
+                "type": "Boolean"
+            },
+            "reduzFerias": {
+                "description": "Reduz férias?",
+                "type": "Boolean"
+            },
+            "reduzFgts": {
+                "description": "Reduz FGTS?",
+                "type": "Boolean"
+            }
+        },
+        "ConfiguracaoLicencaPremioFonteDados": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "lancarLicencaAfastamento": {
+                "description": "Lançar licença premio afastamento?",
+                "type": "Boolean"
+            },
+            "tipoAfastamento": {
+                "description": "Tipo afastamento",
+                "type": "TipoAfastamentoFonteDados"
+            }
+        },
+        "ConfiguracaoFerias": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            }
+        },
+        "PlanoPrevidenciaFonteDados": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo"
+            }
+        },
+        "VinculoEmpregaticioCategoriaTrabalhadorFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "descricao",
+                "type": "String"
+            },
+            "grupoTrabalhador": {
+                "description": "Grupo de trabalhador"
+            },
+            "codigoESocial": {
+                "description": "Código do eSocial",
+                "type": "String"
+            }
+        },
+        "VinculoEmpregaticioMotivoRescisaoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "VinculoEmpregaticioFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo do regime trabalhista"
+            },
+            "descricaoRegimePrevidenciario": {
+                "description": "Regime previdenciário",
+                "type": "String"
+            },
+            "codigoSefip": {
+                "description": "Código da SEFIF",
+                "type": "String"
+            },
+            "geraRais": {
+                "description": "Gera RAIS?",
+                "type": "Boolean"
+            },
+            "codigoRais": {
+                "description": "Código da RAIS",
+                "type": "String"
+            },
+            "descricaoRais": {
+                "description": "Código da RAIS",
+                "type": "String"
+            },
+            "vinculoTemporario": {
+                "description": "Vínculo temporário?",
+                "type": "Boolean"
+            },
+            "dataFinalObrigatoria": {
+                "description": "Data final obrigatória",
+                "type": "Boolean"
+            },
+            "geraCaged": {
+                "description": "Gera CAGED?",
+                "type": "Boolean"
+            },
+            "geraLicencaPremio": {
+                "description": "Gera liçenca-prêmio?",
+                "type": "Boolean"
+            },
+            "categoriaTrabalhador": {
+                "description": "Categoria do trabalhador",
+                "type": "VinculoEmpregaticioCategoriaTrabalhadorFonteDados"
+            },
+            "motivoRescisao": {
+                "description": "Motivo de rescisão",
+                "type": "VinculoEmpregaticioMotivoRescisaoFonteDados"
+            }
+        },
+        "CargoVinculoEmpregaticioFonteDados": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "vinculoEmpregaticio": {
+                "description": "Vinculo empregatício",
+                "type": "VinculoEmpregaticioFonteDados"
+            },
+            "ato": {
+                "description": "Ato",
+                "type": "AtoFonteDados"
+            }
+        },
+        "Organograma": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            },
+            "numero": {
+                "type": "String"
+            },
+            "numeroMascarado": {
+                "type": "String"
+            }
+        },
+        "CargoOrganograma": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "organograma": {
+                "description": "Identificador do organograma",
+                "type": "Organograma"
+            },
+            "quantidadeVagas": {
+                "description": "Quantidade de vagas",
+                "type": "Long"
+            },
+            "quantidadeVagasOcupadas": {
+                "description": "Quantidade de vagas ocupadas",
+                "type": "Long"
+            }
+        },
+        "TipoDiariaFonteDados": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "valorUnitario": {
+                "description": "Valor unitário",
+                "type": "BigDecimal"
+            },
+            "ato": {
+                "description": "Ato",
+                "type": "AtoFonteDados"
+            },
+            "inicioVigencia": {
+                "description": "Inicio vigência",
+                "type": "LocalDateTime"
+            }
+        },
+        "ClasseReferenciaFonteDados": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "ordem": {
+                "description": "Ordem",
+                "type": "Integer"
+            },
+            "classe": {
+                "description": "Classe",
+                "type": "String"
+            },
+            "referencia": {
+                "description": "Referência",
+                "type": "String"
+            },
+            "classeTce": {
+                "description": "Classe TCE",
+                "type": "String"
+            },
+            "referenciaTce": {
+                "description": "Referência TCE",
+                "type": "String"
+            },
+            "valor": {
+                "type": "BigDecimal"
+            }
+        },
+        "NivelSalarialAssociacao": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "valor": {
+                "description": "Valor",
+                "type": "BigDecimal"
+            }
+        },
+        "CargoRemuneracaoFonteDados": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "classeReferenciaInicial": {
+                "description": "Identificador da classe referência inicial",
+                "type": "ClasseReferenciaFonteDados"
+            },
+            "classeReferenciaFinal": {
+                "description": "Identificador da classe referência final",
+                "type": "ClasseReferenciaFonteDados"
+            },
+            "nivelSalarial": {
+                "description": "Identificador do nível salarial",
+                "type": "NivelSalarialAssociacao"
+            }
+        },
+        "Curso": {
+            "id": {
+                "type": "Long"
+            },
+            "descricao": {
+                "type": "String"
+            },
+            "tipoCurso": {},
+            "cargaHoraria": {
+                "type": "BigDecimal"
+            },
+            "frequenciaMinima": {
+                "type": "BigDecimal"
+            },
+            "instituicaoEnsino": {
+                "type": "PessoaJuridica"
+            }
+        },
+        "CargoCompletoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "codigoESocial": {
+                "description": "Codigo eSocial",
+                "type": "String"
+            },
+            "unidadePagamento": {
+                "description": "Unidade de pagamento"
+            },
+            "inicioVigencia": {
+                "description": "Inicio da vigência",
+                "type": "LocalDateTime"
+            },
+            "ato": {
+                "description": "Ato",
+                "type": "AtoFonteDados"
+            },
+            "tipo": {
+                "description": "Tipo do cargo",
+                "type": "TipoCargoFonteDados"
+            },
+            "cbo": {
+                "description": "Cbo",
+                "type": "Cbo"
+            },
+            "pagaDecimoTerceiroSalario": {
+                "description": "Se paga décimo terceiro salário",
+                "type": "Boolean"
+            },
+            "grauInstrucao": {
+                "description": "Grau de instrução"
+            },
+            "situacaoGrauInstrucao": {
+                "description": "Situação do grau de instrução"
+            },
+            "contagemEspecial": {
+                "description": "Contagem especial?"
+            },
+            "acumuloCargos": {
+                "description": "Acumulo de cargos?"
+            },
+            "dedicacaoExclusiva": {
+                "description": "Dedicação exclusiva?",
+                "type": "Boolean"
+            },
+            "quadroCargos": {
+                "description": "Quadro de cargos",
+                "type": "QuadroCargo"
+            },
+            "configuracaoLicencaPremio": {
+                "description": "Configuração licença premio",
+                "type": "ConfiguracaoLicencaPremioFonteDados"
+            },
+            "configuracaoFerias": {
+                "description": "Configuração férias",
+                "type": "ConfiguracaoFerias"
+            },
+            "planosPrevidencia": {
+                "description": "Planos previdência",
+                "type": "PlanoPrevidenciaFonteDados"
+            },
+            "vinculosEmpregaticios": {
+                "description": "Vinculo empregatício",
+                "type": "CargoVinculoEmpregaticioFonteDados"
+            },
+            "quantidadeVagas": {
+                "description": "Quantidade de vagas",
+                "type": "Long"
+            },
+            "quantidadeVagasPcd": {
+                "description": "Quantidade de vagas para pessoas com deficiência",
+                "type": "Long"
+            },
+            "origem": {
+                "description": "Identificador do cargo de origem",
+                "type": "CargoOrigem"
+            },
+            "quantidadeVagasOcupadas": {
+                "description": "Quantidade de vagas ocupadas",
+                "type": "Long"
+            },
+            "organogramas": {
+                "description": "Organogramas",
+                "type": "CargoOrganograma"
+            },
+            "areasAtuacao": {
+                "description": "Áreas de atuação",
+                "type": "CargoAreaAtuacao"
+            },
+            "tiposDiaria": {
+                "description": "Tipo de diária",
+                "type": "TipoDiariaFonteDados"
+            },
+            "remuneracoes": {
+                "description": "Remunerações",
+                "type": "CargoRemuneracaoFonteDados"
+            },
+            "requisitosNecessarios": {
+                "description": "Requisitos necessários",
+                "type": "String"
+            },
+            "atividadesDesempenhadas": {
+                "description": "Atividades desempenhadas",
+                "type": "String"
+            },
+            "extinto": {
+                "description": "Extinto?",
+                "type": "Boolean"
+            },
+            "possuiMensagens": {
+                "description": "Possui mensagens?",
+                "type": "Boolean"
+            },
+            "funcao": {
+                "description": "Função",
+                "type": "Funcao"
+            },
+            "camposAdicionais": {
+                "description": "Campos Adicionais",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "59b807b3dbed8e00dbd91e4a"
+                }
+            },
+            "cursos": {
+                "description": "Cursos",
+                "type": "Curso"
+            }
+        }
+    },
+    "codeExample": "fonteCargo = Dados.pessoal.v2.cargo;\n\ndadosCargo = fonteCargo.busca(campos: \"planosPrevidencia(id, descricao, tipo), configuracaoLicencaPremio(id, descricao, lancarLicencaAfastamento), id, descricao, quantidadeVagas, grauInstrucao, inicioVigencia\",ordenacao: \"id asc\")\n\npercorrer (dadosCargo) { itemCargo ->\n\n}",
+    "description": "cargo",
+    "name": "cargo"
+}

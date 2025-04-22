@@ -38,8 +38,8 @@ def extract_enums_from_file(file_path):
         return {}
 
 def main():
-    input_dir = "folha_v2_metadados_json"
-    output_file = "enums.json"
+    input_dir = "pessoal_v2_metadados_json"
+    output_file = "enums_pessoal.json"
     
     all_enums = {}
     

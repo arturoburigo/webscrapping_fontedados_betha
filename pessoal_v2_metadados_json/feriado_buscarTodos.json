@@ -1,0 +1,112 @@
+{
+    "representation": {
+        "type": "FeriadoDadosRepresentation",
+        "defaultFields": [
+            "tipo",
+            "pontoFacultativo",
+            "gerarHorasExtras",
+            "gerarMarcacaoAutomatica",
+            "abrangencia",
+            "id",
+            "descricao",
+            "dataFeriado"
+        ]
+    },
+    "method": {
+        "name": "buscarTodos",
+        "verb": "GET",
+        "description": "Listagem de Feriados",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "tipo": {
+            "description": "Tipo do Feriado",
+            "sort": "false"
+        },
+        "gerarHorasExtras": {
+            "description": "Gera horas extras",
+            "type": "Boolean",
+            "sort": "false"
+        },
+        "pontoFacultativo": {
+            "description": "Ponto Facultativo",
+            "type": "Boolean",
+            "sort": "false"
+        },
+        "gerarMarcacaoAutomatica": {
+            "description": "Gera marcação automática",
+            "type": "Boolean",
+            "sort": "false"
+        },
+        "abrangencia": {
+            "description": "Abrangência",
+            "sort": "false"
+        },
+        "dataFeriado": {
+            "description": "Data do Feriado",
+            "type": "LocalDate"
+        },
+        "descricao": {
+            "description": "Descrição do Feriado",
+            "type": "String",
+            "filter": "false"
+        }
+    },
+    "types": {
+        "FeriadoDadosRepresentation": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição do Feriado",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo do Feriado"
+            },
+            "dataFeriado": {
+                "description": "Data do Feriado",
+                "type": "LocalDate"
+            },
+            "abrangencia": {
+                "description": "Abrangência"
+            },
+            "pontoFacultativo": {
+                "description": "Ponto Facultativo",
+                "type": "Boolean"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5e283a3febeff501676495ff"
+                }
+            },
+            "gerarMarcacaoAutomatica": {
+                "description": "Gera marcação automática",
+                "type": "Boolean"
+            },
+            "gerarHorasExtras": {
+                "description": "Gera horas extras",
+                "type": "Boolean"
+            }
+        }
+    },
+    "codeExample": "fonteEstados = Dados.pessoal.v2.estados;\n\ndadosEstados = fonteEstados.busca(campos: \"id, nome\",ordenacao: \"nome asc\")\n\npercorrer (dadosEstados) { itemEstados ->\n\n}",
+    "description": "feriado",
+    "name": "feriado"
+}

@@ -1,0 +1,197 @@
+{
+    "representation": {
+        "type": "HorarioIntervalo",
+        "defaultFields": [
+            "flexivel",
+            "entrada",
+            "saida",
+            "id",
+            "descricao"
+        ]
+    },
+    "method": {
+        "name": "buscaIntervalosHorario",
+        "verb": "GET",
+        "description": "Listagem de intervalos do horário",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            }
+        },
+        "pathParams": [
+            {
+                "name": "id",
+                "metadata": {
+                    "type": "Long"
+                }
+            }
+        ]
+    },
+    "expressions": {
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "HorarioIntervalo": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "entrada": {
+                "description": "Entrada",
+                "type": "String"
+            },
+            "saida": {
+                "description": "Saída",
+                "type": "String"
+            },
+            "flexivel": {
+                "description": "É flexível?",
+                "type": "Boolean"
+            },
+            "toleranciaInicialEntrada": {
+                "description": "Mínimo falta",
+                "type": "String"
+            },
+            "toleranciaFinallEntrada": {
+                "description": "Máximo extra",
+                "type": "String"
+            },
+            "toleranciaInicialSaida": {
+                "description": "Mínimo extra",
+                "type": "String"
+            },
+            "toleranciaFinallSaida": {
+                "description": "Máximo falta",
+                "type": "String"
+            }
+        },
+        "HorarioMarcacao": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "sequencia": {
+                "description": "Sequência",
+                "type": "Long"
+            },
+            "hora": {
+                "description": "Hora",
+                "type": "String"
+            },
+            "geraMarcacaoAutomatica": {
+                "description": "Gera marcação automática?",
+                "type": "Boolean"
+            },
+            "tipoMarcacaoHorario": {
+                "description": "Tipo"
+            },
+            "toleranciaInicial": {
+                "description": "Mínimo falta",
+                "type": "String"
+            },
+            "toleranciaFinal": {
+                "description": "Máximo extra",
+                "type": "String"
+            }
+        },
+        "HorarioFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "codigo": {
+                "description": "Código",
+                "type": "String"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "inicioVigencia": {
+                "description": "Vigência",
+                "type": "LocalDateTime"
+            },
+            "entrada": {
+                "description": "Entrada",
+                "type": "String"
+            },
+            "saida": {
+                "description": "Saída",
+                "type": "String"
+            },
+            "flexivel": {
+                "description": "É flexível?",
+                "type": "Boolean"
+            },
+            "quantoTempoAntes": {
+                "description": "Tolerância mínima até entrada?",
+                "type": "String"
+            },
+            "quantoTempoDepois": {
+                "description": "Tolerância máxima após saída?",
+                "type": "String"
+            },
+            "espera": {
+                "description": "Espera",
+                "type": "String"
+            },
+            "cargaHoraria": {
+                "description": "Carga horária",
+                "type": "String"
+            },
+            "duracaoIntervalo": {
+                "description": "Duração do Intervalo",
+                "type": "String"
+            },
+            "toleranciaInicialEntrada": {
+                "description": "Entrada mín. extra",
+                "type": "String"
+            },
+            "toleranciaFinallEntrada": {
+                "description": "Entrada máx. falta?",
+                "type": "String"
+            },
+            "toleranciaInicialSaida": {
+                "description": "Saída mín. falta",
+                "type": "String"
+            },
+            "toleranciaFinallSaida": {
+                "description": "Saída máx. extra",
+                "type": "String"
+            },
+            "intervalos": {
+                "description": "Intervalos",
+                "type": "HorarioIntervalo"
+            },
+            "marcacoes": {
+                "description": "Marcações",
+                "type": "HorarioMarcacao"
+            },
+            "desabilitado": {
+                "description": "Horário desabilitado?",
+                "type": "Boolean"
+            }
+        }
+    },
+    "codeExample": "fonteHorarios = Dados.pessoal.v2.horarios;\n\ndadosHorarios = fonteHorarios.buscaIntervalosHorario(campos: \"id, descricao, entrada, saida, flexivel\")\n\npercorrer (dadosHorarios) { itemHorarios ->\n\n}",
+    "description": "Horários",
+    "name": "horarios"
+}

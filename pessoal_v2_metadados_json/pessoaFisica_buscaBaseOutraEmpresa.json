@@ -1,0 +1,1002 @@
+{
+    "representation": {
+        "type": "BaseOutraEmpresaPessoaFisica",
+        "defaultFields": [
+            "id"
+        ]
+    },
+    "method": {
+        "name": "buscaBaseOutraEmpresa",
+        "verb": "GET",
+        "description": "Listagem das bases de outras empresas da pessoa física",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        },
+        "pathParams": [
+            {
+                "name": "pessoaFisicaId",
+                "metadata": {
+                    "type": "Long"
+                }
+            }
+        ]
+    },
+    "expressions": {
+        "empresa.tipo": {
+            "description": "Tipo da empresa"
+        },
+        "empresa.id": {
+            "description": "Id da empresa",
+            "type": "Long"
+        },
+        "pessoa.nome": {
+            "description": "Nome da pessoa",
+            "type": "String"
+        },
+        "inicioVigencia": {
+            "description": "Início vigência",
+            "type": "YearMonth"
+        },
+        "terminoVigencia": {
+            "description": "Término vigência",
+            "type": "YearMonth"
+        },
+        "tipoProcessamento": {
+            "description": "Tipo processamento"
+        },
+        "pessoa.id": {
+            "description": "Id da pessoa",
+            "type": "Long"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "pessoa.cpf": {
+            "description": "CPF da pessoa",
+            "type": "String"
+        },
+        "empresa.nomeFantasia": {
+            "description": "Nome da empresa",
+            "type": "String"
+        }
+    },
+    "types": {
+        "CategoriaTrabalhadorFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "descricao",
+                "type": "String"
+            },
+            "grupoTrabalhador": {
+                "description": "Grupo de trabalhador"
+            },
+            "codigoESocial": {
+                "description": "Código do eSocial",
+                "type": "String"
+            }
+        },
+        "CompetenciaBaseOutraEmpresa": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "competencia": {
+                "description": "Competência",
+                "type": "YearMonth"
+            },
+            "baseInss": {
+                "description": "Base INSS",
+                "type": "BigDecimal"
+            },
+            "valorRetidoInss": {
+                "description": "Valor retido INSS",
+                "type": "BigDecimal"
+            },
+            "baseIrrf": {
+                "description": "Base IRRF",
+                "type": "BigDecimal"
+            },
+            "valorRetidoIrrf": {
+                "description": "Valor retido IRRF",
+                "type": "BigDecimal"
+            },
+            "categoriaTrabalhador": {
+                "description": "Categoria do trabalhador",
+                "type": "CategoriaTrabalhadorFonteDados"
+            }
+        },
+        "EmailPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "endereco": {
+                "description": "Endereço",
+                "type": "String"
+            }
+        },
+        "DeficienciaPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipo": {
+                "description": "Deficiência"
+            },
+            "grau": {
+                "description": "Grau invalidez"
+            }
+        },
+        "PessoaOrigem": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            }
+        },
+        "ProcessoJudicial": {
+            "indicativoSuspensao": {
+                "description": "Indicativo da suspensão",
+                "type": "String"
+            },
+            "tipoTributacao": {
+                "description": "Tipo da tributação"
+            },
+            "numeroProcesso": {
+                "description": "Número do processo",
+                "type": "String"
+            }
+        },
+        "PessoaFisicaRepresentation": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome oficial da pessoa",
+                "type": "String"
+            },
+            "cpf": {
+                "description": "Número do CPF da pessoa",
+                "type": "String"
+            },
+            "dataNascimento": {
+                "description": "Data de nascimento da pessoa",
+                "type": "LocalDate"
+            },
+            "inicioVigencia": {
+                "description": "Inicio de vigência",
+                "type": "LocalDateTime"
+            },
+            "idade": {
+                "description": "Idade da pessoa",
+                "type": "Integer"
+            },
+            "sexo": {
+                "description": "Sexo"
+            },
+            "estadoCivil": {
+                "description": "Estado civil da pessoa"
+            },
+            "grauEscolaridade": {
+                "description": "Grau de escolaridade da pessoa"
+            },
+            "situacaoGrauEscolaridade": {
+                "description": "Situação do grau de escolaridade"
+            },
+            "raca": {
+                "description": "Raça da pessoa"
+            },
+            "corOlhos": {
+                "description": "Cor dos olhos da pessoa"
+            },
+            "estatura": {
+                "description": "Estatura da pessoa",
+                "type": "Double"
+            },
+            "peso": {
+                "description": "Peso da pessoa",
+                "type": "Double"
+            },
+            "tipoSanguineo": {
+                "description": "Tipo sanguíneo da pessoa"
+            },
+            "doador": {
+                "description": "Identificar se a pessoa é doadora de sangue ou não",
+                "type": "Boolean"
+            },
+            "deficiencias": {
+                "description": "Deficiência",
+                "type": "DeficienciaPessoaFisica"
+            },
+            "naturalidade": {
+                "description": "Nome do município onde nasceu a pessoa",
+                "type": "String"
+            },
+            "estadoNaturalidade": {
+                "description": "Nome do estado onde nasceu a pessoa",
+                "type": "String"
+            },
+            "ufNaturalidade": {
+                "description": "Sigla UF do estado onde nasceu a pessoa",
+                "type": "String"
+            },
+            "nacionalidade": {
+                "description": "Nome do País onde nasceu a pessoa",
+                "type": "String"
+            },
+            "paisNascimento": {
+                "description": "Nome do país de origem, caso o país de nacionalidade não seja o de origem",
+                "type": "String"
+            },
+            "naturalizado": {
+                "description": "Identifica se a pessoa é naturalizada no país de nacionalidade",
+                "type": "Boolean"
+            },
+            "dataChegadaAoBrasil": {
+                "description": "Data de chega ao Brasil para estrangeiros",
+                "type": "LocalDate"
+            },
+            "condicaoTrabalhador": {
+                "description": "Condição do trabalhador estrangeiro no país"
+            },
+            "tempoResidencia": {
+                "description": "Tempo de residência do estrangeiro no país"
+            },
+            "casadoComBrasileiro": {
+                "description": "Identifica se o estrangeiro é casado com uma pessoa brasileira",
+                "type": "Boolean"
+            },
+            "filhosBrasileiros": {
+                "description": "Identifica se o estrangeiro possui filhos brasileiros",
+                "type": "Boolean"
+            },
+            "dataValidadeIdentidadeEstrangeiro": {
+                "description": "Data de validade da identidade estrangeira",
+                "type": "LocalDate"
+            },
+            "numeroRgIdentidade": {
+                "description": "Número do RG da pessoa",
+                "type": "String"
+            },
+            "orgaoEmissorRg": {
+                "description": "Órgão emissor do RG da pessoa",
+                "type": "String"
+            },
+            "ufRg": {
+                "description": "Sigla do estado onde foi feito o RG da pessoa"
+            },
+            "dataEmissaoRg": {
+                "description": "Data de emissão do RG da pessoa",
+                "type": "LocalDate"
+            },
+            "numeroTituloEleitor": {
+                "description": "Número do título de eleitor da pessoa",
+                "type": "String"
+            },
+            "zonaTituloEleitor": {
+                "description": "Zona do título de eleitor da pessoa",
+                "type": "String"
+            },
+            "secaoTituloEleitor": {
+                "description": "Seção do título de eleitor da pessoa",
+                "type": "String"
+            },
+            "numeroCns": {
+                "description": "Número do cartão nacional de saúde da pessoa",
+                "type": "String"
+            },
+            "dataEmissaoCns": {
+                "description": "Data de emissão do cartão nacional de saúde da pessoa",
+                "type": "LocalDate"
+            },
+            "ric": {
+                "description": "Número do registro de identidade civil da pessoa",
+                "type": "String"
+            },
+            "orgaoEmissorRic": {
+                "description": "Órgão emissor do registro de identidade civil da pessoa",
+                "type": "String"
+            },
+            "ufRic": {
+                "description": "Sigla do estado de registro do registro de identidade civil da pessoa"
+            },
+            "dataEmissaoRic": {
+                "description": "Data de emissão do registro de identidade civil da pessoa",
+                "type": "LocalDate"
+            },
+            "numeroCertificadoReservista": {
+                "description": "Número do certificado de reservista da pessoa",
+                "type": "String"
+            },
+            "numeroCarteiraTrabalho": {
+                "description": "Número da carteira de trabalho da pessoa",
+                "type": "String"
+            },
+            "serieCarteiraTrabalho": {
+                "description": "Série da carteira de trabalho da pessoa",
+                "type": "String"
+            },
+            "ufCarteiraTrabalho": {
+                "description": "Sigla do estado de registro da carteira de trabalho da pessoa"
+            },
+            "dataEmissaoCarteiraTrabalho": {
+                "description": "Data de emissão da carteira de trabalho da pessoa",
+                "type": "LocalDate"
+            },
+            "numeroPisPasep": {
+                "description": "Número do PIS/PASEP da pessoa",
+                "type": "String"
+            },
+            "dataEmissaoPisPasep": {
+                "description": "Data de emissão do PIS/PASEP da pessoa",
+                "type": "LocalDate"
+            },
+            "numeroIncricaoMunicipal": {
+                "description": "Número da inscrição municipal da pessoa",
+                "type": "String"
+            },
+            "numeroCnh": {
+                "description": "Número da carteira de motorista da pessoa",
+                "type": "String"
+            },
+            "ufCnh": {
+                "description": "Sigla do estado de registro da carteira de motorista da pessoa"
+            },
+            "categoriaCnh": {
+                "description": "Categoria da carteira de motorista da pessoa",
+                "type": "String"
+            },
+            "dataEmissaoCnh": {
+                "description": "Data de emissão da carteira de motorista da pessoa",
+                "type": "LocalDate"
+            },
+            "dataPrimeiraHabilitacaoCnh": {
+                "description": "Data da primeira carteira de motorista da pessoa",
+                "type": "LocalDate"
+            },
+            "dataVencimentoCnh": {
+                "description": "Data de vencimento da carteira de motorista da pessoa",
+                "type": "LocalDate"
+            },
+            "observacoesCnh": {
+                "description": "Observações da carteira de motorista da pessoa",
+                "type": "String"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5beea0b8ce3e2b015a0e629d"
+                }
+            },
+            "origem": {
+                "description": "Pessoa de origem",
+                "type": "PessoaOrigem"
+            },
+            "processosJudiciais": {
+                "description": "Processos Judiciais",
+                "type": "ProcessoJudicial"
+            },
+            "nif": {
+                "description": "Número de identificação fiscal da pessoa",
+                "type": "String"
+            },
+            "indicativoNif": {
+                "description": "Indicativo NIF da pessoa"
+            },
+            "formaTributacao": {
+                "description": "Forma de tributação da pessoa"
+            },
+            "paisFiscal": {
+                "description": "País de residência fiscal da pessoa",
+                "type": "String"
+            },
+            "historico": {
+                "type": "Boolean"
+            },
+            "nomeSocial": {
+                "description": "Representa o nome social da pessoa",
+                "type": "String"
+            },
+            "createdIn": {
+                "description": "createdIn",
+                "type": "LocalDateTime"
+            },
+            "updatedIn": {
+                "description": "updatedIn",
+                "type": "LocalDateTime"
+            }
+        },
+        "BancoPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "numeroBanco": {
+                "description": "Número",
+                "type": "String"
+            }
+        },
+        "AgenciaBancariaPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "banco": {
+                "description": "Banco",
+                "type": "BancoPessoaFisica"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "digito": {
+                "description": "Dígito",
+                "type": "String"
+            }
+        },
+        "ContaBancariaPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "agencia": {
+                "description": "Agência",
+                "type": "AgenciaBancariaPessoaFisica"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "digito": {
+                "description": "Dígito",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "dataAbertura": {
+                "description": "Data de abertura",
+                "type": "LocalDate"
+            },
+            "dataFechamento": {
+                "description": "Data de fechamento",
+                "type": "LocalDate"
+            },
+            "situacao": {
+                "description": "Situação"
+            },
+            "principal": {
+                "description": "Principal",
+                "type": "Boolean"
+            }
+        },
+        "CidPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "MolestiaGravePessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "cid": {
+                "description": "CID",
+                "type": "CidPessoaFisica"
+            },
+            "dataInicial": {
+                "description": "Data inicial",
+                "type": "LocalDate"
+            },
+            "dataFinal": {
+                "description": "Data final",
+                "type": "LocalDate"
+            },
+            "observacoes": {
+                "description": "Observações",
+                "type": "String"
+            }
+        },
+        "PessoaJuridicaPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "cnpj": {
+                "description": "CNPJ",
+                "type": "String"
+            },
+            "razaoSocial": {
+                "description": "Razão social",
+                "type": "String"
+            },
+            "nomeFantasia": {
+                "description": "Nome fantasia",
+                "type": "String"
+            }
+        },
+        "PessoaFisicaAssociacaoRepresentation": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "cpf": {
+                "description": "CPF",
+                "type": "String"
+            },
+            "dataNascimento": {
+                "description": "Data de nascimento",
+                "type": "LocalDate"
+            }
+        },
+        "BaseOutraEmpresaPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "empresa": {
+                "description": "Empresa",
+                "type": "PessoaJuridicaPessoaFisica"
+            },
+            "pessoa": {
+                "description": "Pessoa física",
+                "type": "PessoaFisicaAssociacaoRepresentation"
+            },
+            "tipoProcessamento": {
+                "description": "Tipo processamento"
+            },
+            "inicioVigencia": {
+                "description": "Início vigência",
+                "type": "YearMonth"
+            },
+            "terminoVigencia": {
+                "description": "Término vigência",
+                "type": "YearMonth"
+            }
+        },
+        "TelefonePessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "observacao": {
+                "description": "Observação",
+                "type": "String"
+            }
+        },
+        "TipoLogradouroPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "abreviatura": {
+                "description": "Abreviatura",
+                "type": "String"
+            }
+        },
+        "LogradouroPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipoLogradouro": {
+                "description": "Tipo",
+                "type": "TipoLogradouroPessoaFisica"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "EstadoPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "uf": {
+                "description": "UF",
+                "type": "String"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "pais": {
+                "description": "País",
+                "type": "String"
+            }
+        },
+        "MunicipioPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "estado": {
+                "description": "Estado",
+                "type": "EstadoPessoaFisica"
+            }
+        },
+        "BairroPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "MunicipioPessoaFisica"
+            }
+        },
+        "EnderecoPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "logradouro": {
+                "description": "Logradouro",
+                "type": "LogradouroPessoaFisica"
+            },
+            "bairro": {
+                "description": "Bairro",
+                "type": "BairroPessoaFisica"
+            },
+            "cep": {
+                "description": "CEP",
+                "type": "String"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "complemento": {
+                "description": "Complemento",
+                "type": "String"
+            },
+            "descricao": {
+                "description": "Complemento",
+                "type": "String"
+            }
+        },
+        "FiliacaoPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome da filiação da pessoa",
+                "type": "String"
+            },
+            "tipoFiliacao": {
+                "description": "Grau de parentesco entre a filiação e a pessoa"
+            },
+            "naturezaFiliacao": {
+                "description": "Natureza da filiação da pessoa"
+            }
+        },
+        "PessoaFisicaDependente": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "cpf": {
+                "description": "CPF",
+                "type": "String"
+            },
+            "dataNascimento": {
+                "description": "Data de nascimento",
+                "type": "LocalDate"
+            }
+        },
+        "ConfiguracaoEvento": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "classificacao": {
+                "description": "Classificação do evento"
+            },
+            "taxa": {
+                "description": "Taxa",
+                "type": "BigDecimal"
+            },
+            "unidade": {
+                "description": "Unidade"
+            },
+            "compoemHorasMes": {
+                "description": "Compõem horas do mês",
+                "type": "Boolean"
+            },
+            "mensalIntegral": {
+                "description": "Tipo mensal e subtipo integral",
+                "type": "Boolean"
+            },
+            "mensalAdiantamento": {
+                "description": "Tipo mensal e subtipo adiantamento",
+                "type": "Boolean"
+            },
+            "feriasIntegral": {
+                "description": "Tipo férias e subtipo integral",
+                "type": "Boolean"
+            },
+            "decimoTerceiroIntegral": {
+                "description": "Tipo décimo terceiro salário e subtipo integral",
+                "type": "Boolean"
+            },
+            "decimoTerceiroAdiantamento": {
+                "description": "Tipo décimo terceiro salário e subtipo adiantamento",
+                "type": "Boolean"
+            },
+            "rescisaoIntegral": {
+                "description": "Tipo rescisão e subtipo integral",
+                "type": "Boolean"
+            }
+        },
+        "DependentePessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "pessoaDependente": {
+                "description": "Dependente",
+                "type": "PessoaFisicaDependente"
+            },
+            "eventoPensao": {
+                "description": "Evento de pensão",
+                "type": "ConfiguracaoEvento"
+            },
+            "grau": {
+                "description": "Grau de dependência"
+            },
+            "grauDescricao": {
+                "description": "Descricao do grau outros",
+                "type": "String"
+            },
+            "dataInicio": {
+                "description": "Data de início",
+                "type": "LocalDate"
+            },
+            "dataTermino": {
+                "description": "Data de término",
+                "type": "LocalDate"
+            },
+            "motivoInicio": {
+                "description": "Motivo do início"
+            },
+            "motivoTermino": {
+                "description": "Motivo do término"
+            },
+            "estuda": {
+                "description": "É estudante?",
+                "type": "Boolean"
+            },
+            "dataInicioCurso": {
+                "description": "Data de início do curso",
+                "type": "LocalDate"
+            },
+            "dataFinalCurso": {
+                "description": "Data final do curso",
+                "type": "LocalDate"
+            },
+            "irrf": {
+                "description": "IRRF?",
+                "type": "Boolean"
+            },
+            "salarioFamilia": {
+                "description": "Salário família?",
+                "type": "Boolean"
+            },
+            "pensao": {
+                "description": "Pensão?",
+                "type": "Boolean"
+            },
+            "dataInicioBeneficio": {
+                "description": "Data de início do benefíco",
+                "type": "LocalDate"
+            },
+            "duracao": {
+                "description": "Duração"
+            },
+            "dataVencimento": {
+                "description": "Data vencimento",
+                "type": "LocalDate"
+            },
+            "alvaraJudicial": {
+                "description": "Alvará judicial",
+                "type": "String"
+            },
+            "dataAlvara": {
+                "description": "Data do alvará judicial",
+                "type": "LocalDate"
+            },
+            "aplicacaoDesconto": {
+                "description": "Aplicação de desconto"
+            },
+            "percentualDesconto": {
+                "description": "Percentual de desconto",
+                "type": "BigDecimal"
+            },
+            "valorDesconto": {
+                "description": "Percentual de desconto",
+                "type": "BigDecimal"
+            },
+            "percentualPensaoFgts": {
+                "description": "Percentual de desconto da pensão do dependente",
+                "type": "BigDecimal"
+            },
+            "formaPagamento": {
+                "description": "Forma de pagamento"
+            },
+            "contaBancaria": {
+                "description": "Conta bancária",
+                "type": "ContaBancariaPessoaFisica"
+            }
+        },
+        "FotoPessoaFisica": {
+            "name": {
+                "description": "Nome do arquivo",
+                "type": "String"
+            },
+            "description": {
+                "description": "Descrição do arquivo",
+                "type": "String"
+            },
+            "type": {
+                "description": "Tipo de arquivo",
+                "type": "String"
+            },
+            "size": {
+                "description": "Tamanho de arquivo",
+                "type": "Long"
+            },
+            "expirationDate": {
+                "description": "Data de expiração do arquivo",
+                "type": "LocalDateTime"
+            },
+            "url": {
+                "description": "URL para baixar o arquivo",
+                "type": "String"
+            }
+        },
+        "CertidaoCivilPessoaFisica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "cpf": {
+                "description": "CPF",
+                "type": "String"
+            },
+            "dataNascimento": {
+                "description": "Data de nascimento",
+                "type": "LocalDate"
+            }
+        },
+        "CertidaoCivilMunicipio": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            }
+        },
+        "CertidaoCivil": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "pessoa": {
+                "description": "Pessoa",
+                "type": "CertidaoCivilPessoaFisica"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "numeroDocumento": {
+                "description": "Número do documento",
+                "type": "String"
+            },
+            "numeroLivro": {
+                "description": "Número do livro",
+                "type": "String"
+            },
+            "numeroFolha": {
+                "description": "Número da folha",
+                "type": "String"
+            },
+            "modelo": {
+                "description": "Modelo"
+            },
+            "dataDocumento": {
+                "description": "Data do documento",
+                "type": "LocalDate"
+            },
+            "cartorio": {
+                "description": "Cartório",
+                "type": "String"
+            },
+            "principal": {
+                "description": "Principal?",
+                "type": "Boolean"
+            },
+            "municipio": {
+                "description": "Município",
+                "type": "CertidaoCivilMunicipio"
+            }
+        }
+    },
+    "codeExample": "fontePessoaFisica = Dados.pessoal.v2.pessoaFisica;\n\ndadosPessoaFisica = fontePessoaFisica.buscaBaseOutraEmpresa(campos: \"id, pessoa(id, nome, cpf, dataNascimento), empresa(id, tipo, cnpj, razaoSocial, nomeFantasia), tipoProcessamento, inicioVigencia, terminoVigencia\",parametros:[\"pessoaFisicaId\":null])\n\npercorrer (dadosPessoaFisica) { itemPessoaFisica ->\n\n}",
+    "description": "PessoaFisica",
+    "name": "pessoaFisica"
+}

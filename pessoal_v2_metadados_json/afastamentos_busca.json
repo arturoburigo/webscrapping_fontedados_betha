@@ -1,0 +1,408 @@
+{
+    "representation": {
+        "type": "AfastamentoFonteDados",
+        "defaultFields": [
+            "decorrente",
+            "fimAfastamento",
+            "id",
+            "inicioAfastamento"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de afastamentos",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            },
+            "selecaoAvancada": {
+                "type": "String"
+            },
+            "vigenciaHistoricaSelecao": {
+                "type": "LocalDateTime"
+            }
+        }
+    },
+    "expressions": {
+        "quantidadeAbono": {
+            "description": "Quantidade de abono",
+            "type": "BigDecimal"
+        },
+        "tipoAfastamento.descricao": {
+            "description": "Descrição do tipo de afastamento",
+            "type": "String"
+        },
+        "matricula.grupoFuncional.descricao": {
+            "description": "Descrição do grupo funcional",
+            "type": "String"
+        },
+        "matricula.organograma.descricao": {
+            "description": "Descrição do organograma",
+            "type": "String"
+        },
+        "motivo": {
+            "description": "Motivo",
+            "type": "String"
+        },
+        "matricula.organograma.id": {
+            "description": "Id do organograma",
+            "type": "Long"
+        },
+        "matricula.situacao": {
+            "description": "Situação da matrícula"
+        },
+        "competenciaAbono": {
+            "description": "Competência de abono",
+            "type": "YearMonth"
+        },
+        "unidade": {
+            "description": "Unidade"
+        },
+        "descontar": {
+            "description": "Descontar",
+            "type": "Boolean"
+        },
+        "abonar": {
+            "description": "Abonar",
+            "type": "Boolean"
+        },
+        "decorrente": {
+            "description": "Decorrente"
+        },
+        "fimAfastamento": {
+            "description": "Fim do afastamento",
+            "type": "LocalDate"
+        },
+        "matricula.tipo": {
+            "description": "Tipo da matrícula"
+        },
+        "competenciaDesconto": {
+            "description": "Competência de desconto",
+            "type": "YearMonth"
+        },
+        "retornoTrabalho": {
+            "description": "Data de retorno ao trabalho",
+            "type": "LocalDate"
+        },
+        "inicioAfastamento": {
+            "description": "Início do afastamento",
+            "type": "LocalDate"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "tipoAfastamento.classificacao": {
+            "description": "Classificação do tipo de afastamento"
+        },
+        "quantidade": {
+            "description": "Quantidade",
+            "type": "BigDecimal"
+        },
+        "matricula.id": {
+            "description": "Id da matrícula",
+            "type": "Long"
+        },
+        "matricula.grupoFuncional.id": {
+            "description": "Id do grupo funcional",
+            "type": "Long"
+        }
+    },
+    "types": {
+        "PessoaFisicaAfastamento": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "cpf": {
+                "description": "CPF",
+                "type": "String"
+            },
+            "dataNascimento": {
+                "description": "Data de nascimento",
+                "type": "LocalDate"
+            },
+            "sexo": {
+                "description": "Sexo"
+            }
+        },
+        "CodigoMatriculaFonteDadosMinhaFolha": {
+            "numero": {
+                "description": "Número",
+                "type": "Long"
+            },
+            "contrato": {
+                "description": "Contrato",
+                "type": "Integer"
+            },
+            "digitoVerificador": {
+                "description": "Digito verificador",
+                "type": "Integer"
+            }
+        },
+        "MatriculaAfastamento": {
+            "id": {
+                "description": "Id da matrícula",
+                "type": "Long"
+            },
+            "situacao": {
+                "description": "Situação"
+            },
+            "tipo": {
+                "description": "Tipo Matrícula"
+            },
+            "pessoa": {
+                "description": "Pessoa",
+                "type": "PessoaFisicaAfastamento"
+            },
+            "codigoMatricula": {
+                "description": "Codigo da matrícula",
+                "type": "CodigoMatriculaFonteDadosMinhaFolha"
+            }
+        },
+        "TipoAfastamentoAfastamento": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "AtoAfastamento": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "numeroOficial": {
+                "description": "Número oficial",
+                "type": "String"
+            }
+        },
+        "AtestadoAfastamento": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            }
+        },
+        "AfastamentoOrigem": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipoAfastamento": {
+                "description": "Tipo do afastamento",
+                "type": "TipoAfastamentoAfastamento"
+            },
+            "inicioAfastamento": {
+                "description": "Início afastamento",
+                "type": "LocalDate"
+            },
+            "fimAfastamento": {
+                "description": "Fim afastamento",
+                "type": "LocalDate"
+            }
+        },
+        "SindicatoFuncionario": {
+            "tipo": {
+                "description": "Tipo"
+            },
+            "mesContribuicao": {
+                "description": "Mês contribuição"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "diasAviso": {
+                "description": "Dias de aviso",
+                "type": "Integer"
+            },
+            "dataBase": {
+                "description": "Data base",
+                "type": "MonthDay"
+            }
+        },
+        "PessoaJuridica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "razaoSocial": {
+                "description": "Razão social",
+                "type": "String"
+            },
+            "nomeFantasia": {
+                "description": "Nome fantasia",
+                "type": "String"
+            },
+            "cnpj": {
+                "description": "CNPJ",
+                "type": "String"
+            },
+            "codigoInstFinanceira": {
+                "description": "Código Inst. Financeira",
+                "type": "String"
+            },
+            "sindicato": {
+                "description": "Sindicato",
+                "type": "SindicatoFuncionario"
+            }
+        },
+        "AfastamentoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "matricula": {
+                "description": "Matrícula",
+                "type": "MatriculaAfastamento"
+            },
+            "tipoAfastamento": {
+                "description": "Tipo do afastamento",
+                "type": "TipoAfastamentoAfastamento"
+            },
+            "ato": {
+                "description": "Ato",
+                "type": "AtoAfastamento"
+            },
+            "inicioAfastamento": {
+                "description": "Início do afastamento",
+                "type": "LocalDate"
+            },
+            "fimAfastamento": {
+                "description": "Fim do afastamento",
+                "type": "LocalDate"
+            },
+            "retornoTrabalho": {
+                "description": "Data de retorno ao trabalho",
+                "type": "LocalDate"
+            },
+            "quantidade": {
+                "description": "Quantidade",
+                "type": "BigDecimal"
+            },
+            "unidade": {
+                "description": "Unidade"
+            },
+            "quantidadeDias": {
+                "description": "Quantidade de dias",
+                "type": "BigDecimal"
+            },
+            "jornadaDiaria": {
+                "description": "Jornada diária",
+                "type": "BigDecimal"
+            },
+            "decorrente": {
+                "description": "Decorrente"
+            },
+            "atestados": {
+                "description": "Atestados",
+                "type": "AtestadoAfastamento"
+            },
+            "acidenteTransito": {
+                "description": "Acidente de trânsito"
+            },
+            "retificacao": {
+                "description": "Retificação",
+                "type": "Boolean"
+            },
+            "dataRetificacao": {
+                "description": "Data de retificação",
+                "type": "YearMonth"
+            },
+            "origemRetificacao": {
+                "description": "Origem da retificação"
+            },
+            "tipoProcessoRetificacao": {
+                "description": "Tipo de processo da retificação"
+            },
+            "numeroProcesso": {
+                "description": "Número do processo",
+                "type": "String"
+            },
+            "remuneracaoCargoEfetivo": {
+                "description": "Remuneração do cargo efetivo",
+                "type": "Boolean"
+            },
+            "observacao": {
+                "description": "Observação",
+                "type": "String"
+            },
+            "motivo": {
+                "description": "Motivo",
+                "type": "String"
+            },
+            "descontar": {
+                "description": "Descontar",
+                "type": "Boolean"
+            },
+            "competenciaDesconto": {
+                "description": "Competência de desconto",
+                "type": "YearMonth"
+            },
+            "abonar": {
+                "description": "Abonar",
+                "type": "Boolean"
+            },
+            "competenciaAbono": {
+                "description": "Competência de abono",
+                "type": "YearMonth"
+            },
+            "quantidadeAbono": {
+                "description": "Quantidade de abono",
+                "type": "BigDecimal"
+            },
+            "afastamentoOrigem": {
+                "description": "Afastamento de origem",
+                "type": "AfastamentoOrigem"
+            },
+            "orgaoDestino": {
+                "description": "Órgão destino",
+                "type": "PessoaJuridica"
+            },
+            "tipoOnus": {
+                "description": "Tipo de ônus"
+            },
+            "atoCessao": {
+                "description": "Ato de cessão",
+                "type": "AtoAfastamento"
+            },
+            "atoRetorno": {
+                "description": "Ato de retorno",
+                "type": "AtoAfastamento"
+            },
+            "indicativoCessao": {
+                "description": "Indicativo de cessão"
+            },
+            "codigoUnidadeGestoraDestino": {
+                "description": "Código da unidade gestora de destino",
+                "type": "String"
+            }
+        }
+    },
+    "codeExample": "fonteAfastamentos = Dados.pessoal.v2.afastamentos;\n\ndadosAfastamentos = fonteAfastamentos.busca(campos: \"matricula(codigoMatricula(numero, contrato, digitoVerificador), pessoa(nome), situacao), id, inicioAfastamento, fimAfastamento, decorrente, motivo\",ordenacao: \"matricula.id asc\")\n\npercorrer (dadosAfastamentos) { itemAfastamentos ->\n\n}",
+    "description": "Afastamentos",
+    "name": "afastamentos"
+}

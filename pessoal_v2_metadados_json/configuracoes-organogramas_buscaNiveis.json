@@ -1,0 +1,113 @@
+{
+    "representation": {
+        "type": "ConfiguracaoNivelOrganograma",
+        "defaultFields": [
+            "id",
+            "descricao"
+        ]
+    },
+    "method": {
+        "name": "buscaNiveis",
+        "verb": "GET",
+        "description": "Listagem de nível da configuração de organograma",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        },
+        "pathParams": [
+            {
+                "name": "configuracaoId",
+                "metadata": {
+                    "type": "Long"
+                }
+            }
+        ]
+    },
+    "expressions": {
+        "responsavelControleVagas": {
+            "description": "É responsável pelo controle de vagas?",
+            "type": "Boolean"
+        },
+        "quantidadeDigitos": {
+            "description": "Quantidade de dígitos",
+            "type": "Integer"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "separador": {
+            "description": "Separador de nível"
+        },
+        "nivel": {
+            "description": "Nível",
+            "type": "Integer"
+        },
+        "configuracao.emUso": {
+            "description": "Configuração do organograma em uso",
+            "type": "Boolean"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "ConfiguracaoNivelOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "nivel": {
+                "description": "Nível",
+                "type": "Integer"
+            },
+            "quantidadeDigitos": {
+                "description": "Quantidade de dígitos",
+                "type": "Integer"
+            },
+            "separador": {
+                "description": "Separador de nível"
+            },
+            "responsavelControleVagas": {
+                "description": "É responsável pelo controle de vagas?",
+                "type": "Boolean"
+            }
+        },
+        "ConfiguracaoOrganograma": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "emUso": {
+                "description": "Configuração está em uso?",
+                "type": "Boolean"
+            },
+            "niveis": {
+                "description": "Níveis",
+                "type": "ConfiguracaoNivelOrganograma"
+            }
+        }
+    },
+    "codeExample": "fonteConfiguracoes-organogramas = Dados.pessoal.v2.configuracoes-organogramas;\n\ndadosConfiguracoes-organogramas = fonteConfiguracoes-organogramas.buscaNiveis(campos: \"id, descricao, nivelSecretaria, nivel, quantidadeDigitos, separador\",ordenacao: \"id,nivel asc\",parametros:[\"configuracaoId\":null])\n\npercorrer (dadosConfiguracoes-organogramas) { itemConfiguracoes-organogramas ->\n\n}",
+    "description": "Configurações de organogramas",
+    "name": "configuracoes-organogramas"
+}

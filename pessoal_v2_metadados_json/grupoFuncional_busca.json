@@ -1,0 +1,51 @@
+{
+    "representation": {
+        "type": "GrupoFuncional",
+        "defaultFields": []
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Grupo funcional",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "id": {
+            "description": "Id",
+            "type": "Long",
+            "sort": "false"
+        },
+        "descricao": {
+            "description": "Descrição",
+            "type": "String"
+        }
+    },
+    "types": {
+        "GrupoFuncional": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        }
+    },
+    "codeExample": "fonteGrupoFuncional = Dados.pessoal.v2.grupoFuncional;\n\ndadosGrupoFuncional = fonteGrupoFuncional.busca(campos: \"id, descricao\",ordenacao: \"descricao asc\")\n\npercorrer (dadosGrupoFuncional) { itemGrupoFuncional ->\n\n}",
+    "description": "GrupoFuncional",
+    "name": "grupoFuncional"
+}

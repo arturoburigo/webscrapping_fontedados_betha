@@ -1,6 +1,6 @@
 # JSON Metadata and Enum Management Tools
 
-This project provides a suite of tools for scraping JSON metadata and managing enum definitions from Betha Cloud's API. It includes scripts for scraping metadata, extracting enums, and cleaning up enum references.
+This project provides a suite of tools for scraping JSON metadata and managing enum definitions from Betha Cloud's API. It includes scripts for scraping metadata, extracting enums, merging files, and cleaning up enum references.
 
 ## Project Structure
 
@@ -8,15 +8,20 @@ This project provides a suite of tools for scraping JSON metadata and managing e
 .
 ├── README.md                      # This documentation file
 ├── scraping_metadata.py          # Script to scrape metadata from API
-├── extract_enums.py              # Script to extract enums into a consolidated file
-├── delete_enums.py               # Script to remove enums from source files
-├── .env                          # Environment variables configuration
-├── enums.json                    # Output file containing all extracted enums
-├── metadata_output/              # Directory for scraped metadata
-└── folha_v2_metadados_json/      # Directory containing processed JSON files
+├── merge_jsons.py               # Script to merge JSON files by directory
+├── merge_enums.py               # Script to merge enum files
+├── extract_enums.py             # Script to extract enums into a consolidated file
+├── delete_enums.py              # Script to remove enums from source files
+├── .env                         # Environment variables configuration
+├── enums.json                   # Output file containing all merged enums
+├── pessoal.json                # Output file containing all merged pessoal metadata
+├── folha.json                  # Output file containing all merged folha metadata
+├── metadata_output/            # Directory for scraped metadata
+├── pessoal_v2_metadados_json/ # Directory containing pessoal JSON files
+└── folha_v2_metadados_json/   # Directory containing folha JSON files
 ```
 
-## Complete Process Flow
+## Execution Order and Process Flow
 
 ### 1. Initial Setup
 
@@ -59,44 +64,66 @@ This script fetches metadata from the Betha Cloud API.
    Failed Resources: 0
    ```
 
-3. Results:
-   - Creates JSON files in `metadata_output/` directory
-   - Each file contains metadata for one resource
-   - Generates `scraping_errors.json` if any errors occur
+### 3. Merge JSON Files (`merge_jsons.py`)
 
-### 3. Enum Extraction (`extract_enums.py`)
+This script merges all JSON files from each directory (pessoal and folha) into consolidated files.
 
-This script processes the scraped metadata files to extract and consolidate enum definitions.
-
-1. Run the extraction script:
+1. Run the merge script:
    ```bash
-   python extract_enums.py
+   python merge_jsons.py
    ```
 
 2. Expected Output:
    ```
-   Extracted 180 unique enums to enums.json
+   Processing directory: pessoal_v2_metadados_json
+   Processed: file1.json
+   Processed: file2.json
+   ...
+   Merged 75 files into pessoal.json
+
+   Processing directory: folha_v2_metadados_json
+   Processed: file1.json
+   Processed: file2.json
+   ...
+   Merged 76 files into folha.json
+
+   Final Statistics:
+   Total files processed in pessoal: 75
+   Total files processed in folha: 76
+   Total files processed: 151
    ```
 
 3. Results:
-   - Creates `enums.json` containing all unique enums
-   - Example enum structure:
-     ```json
-     {
-       "TipoDespesa": {
-         "values": [
-           {
-             "key": "FOLHA",
-             "value": 1,
-             "description": "Folhas e eventos"
-           },
-           ...
-         ]
-       }
-     }
-     ```
+   - Creates `pessoal.json` containing all merged pessoal metadata
+   - Creates `folha.json` containing all merged folha metadata
+   - Each output file is structured as a dictionary where keys are original filenames
 
-### 4. Enum Removal (`delete_enums.py`)
+### 4. Extract and Merge Enums (`extract_enums.py` and `merge_enums.py`)
+
+These scripts extract enums from metadata and merge them into a single file.
+
+1. First, extract enums:
+   ```bash
+   python extract_enums.py
+   ```
+
+2. Then, merge enum files:
+   ```bash
+   python merge_enums.py
+   ```
+
+3. Expected Output from merge_enums.py:
+   ```
+   Statistics:
+   Enums in pessoal: 133
+   Enums in folha: 180
+   Total unique enums: 211
+   Duplicates removed: 102
+
+   Merged enums have been saved to enums.json
+   ```
+
+### 5. Enum Removal (`delete_enums.py`)
 
 This script cleans up the JSON files by removing enum definitions and references.
 
@@ -115,11 +142,6 @@ This script cleans up the JSON files by removing enum definitions and references
    Modified 68 files
    ```
 
-3. Results:
-   - Modifies original JSON files in place
-   - Removes enum sections and references
-   - Preserves other metadata structure
-
 ## Features in Detail
 
 ### Metadata Scraping
@@ -129,19 +151,19 @@ This script cleans up the JSON files by removing enum definitions and references
 - Generates detailed error logs
 - Sanitizes filenames for cross-platform compatibility
 
-### Enum Extraction
-- Identifies enum definitions in JSON structure
-- Handles nested enum references
-- Consolidates duplicate definitions
+### JSON Merging
+- Merges JSON files by directory
+- Maintains original file structure as keys
+- Handles large files efficiently
+- Provides detailed processing statistics
+- Error handling for malformed JSON
+
+### Enum Management
+- Extracts and consolidates enum definitions
+- Merges enum files with duplicate handling
+- Removes enum sections from source files
 - Maintains enum value mappings and descriptions
 - Warns about inconsistent definitions
-
-### Enum Removal
-- Safely removes enum sections
-- Cleans up enum references in expressions
-- Removes enum references in types
-- Preserves JSON structure and formatting
-- Only modifies affected files
 
 ## Error Handling
 
@@ -170,17 +192,20 @@ The scripts include comprehensive error handling for:
    - Verify API credentials
    - Check disk space requirements
    - Review input file structure
+   - Follow the execution order specified above
 
 2. **During Execution**:
    - Monitor error outputs
    - Check progress indicators
    - Verify file permissions
+   - Run scripts in the specified order
 
 3. **After Completion**:
    - Validate output files
    - Review error logs
    - Check file integrity
    - Verify enum consistency
+   - Ensure all merges completed successfully
 
 ## Troubleshooting
 
@@ -195,11 +220,19 @@ Common issues and solutions:
    - Check file permissions
    - Verify JSON syntax
    - Ensure sufficient disk space
+   - Check for file encoding issues
 
-3. **Missing Enums**:
+3. **Merge Issues**:
+   - Verify source directory structure
+   - Check for duplicate filenames
+   - Ensure sufficient memory for large merges
+   - Validate JSON structure before merging
+
+4. **Missing Enums**:
    - Verify source file structure
    - Check for nested references
    - Review error logs
+   - Ensure all files were processed
 
 ## Contributing
 

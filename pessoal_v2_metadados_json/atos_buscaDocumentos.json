@@ -1,0 +1,165 @@
+{
+    "representation": {
+        "type": "ArquivoAto",
+        "defaultFields": []
+    },
+    "method": {
+        "name": "buscaDocumentos",
+        "verb": "GET",
+        "description": "Retorna os documentos anexos ao ato.",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            }
+        },
+        "pathParams": [
+            {
+                "name": "atoId",
+                "metadata": {
+                    "type": "Long"
+                }
+            }
+        ]
+    },
+    "expressions": {},
+    "types": {
+        "TipoAto": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "classificacao": {
+                "description": "Classificação"
+            }
+        },
+        "NaturezaTextoJuridico": {
+            "id": {
+                "description": "id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "AtoFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "numeroOficial": {
+                "description": "Número oficial",
+                "type": "String"
+            },
+            "tipo": {
+                "description": "Tipo",
+                "type": "TipoAto"
+            },
+            "ementa": {
+                "description": "Ementa",
+                "type": "String"
+            },
+            "naturezaTextoJuridico": {
+                "description": "Natureza do texto jurídico",
+                "type": "NaturezaTextoJuridico"
+            },
+            "dataCriacao": {
+                "description": "Data de criação",
+                "type": "LocalDate"
+            },
+            "dataVigorar": {
+                "description": "Data a vigorar",
+                "type": "LocalDate"
+            },
+            "dataPublicacao": {
+                "description": "Data de publicação",
+                "type": "LocalDate"
+            },
+            "dataResolucao": {
+                "description": "Data de resolução",
+                "type": "LocalDate"
+            },
+            "numeroDiarioOficial": {
+                "description": "Número do diário oficial",
+                "type": "Long"
+            },
+            "camposAdicionais": {
+                "description": "Campo adicional",
+                "type": "CamposAdicionais",
+                "properties": {
+                    "cpaIdCadastro": "5bfe7b79b21c82015a8fb85a"
+                }
+            }
+        },
+        "ArquivoAto": {
+            "name": {
+                "description": "Nome do arquivo",
+                "type": "String"
+            },
+            "key": {
+                "description": "Chave do arquivo",
+                "type": "String"
+            },
+            "description": {
+                "description": "Descrição do arquivo",
+                "type": "String"
+            },
+            "type": {
+                "description": "Tipo de arquivo",
+                "type": "String"
+            },
+            "size": {
+                "description": "Tamanho de arquivo",
+                "type": "Long"
+            },
+            "url": {
+                "description": "URL para baixar o arquivo",
+                "type": "String"
+            }
+        },
+        "FonteDivulgacao": {
+            "id": {
+                "description": "id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "meioComunicacao": {
+                "description": "Meio de comunicação"
+            }
+        },
+        "AtoFonteDivulgacao": {
+            "id": {
+                "description": "id",
+                "type": "Long"
+            },
+            "fonteDivulgacao": {
+                "description": "Fonte de divulgação",
+                "type": "FonteDivulgacao"
+            },
+            "dataPublicacao": {
+                "description": "Data publicação",
+                "type": "LocalDate"
+            },
+            "numeroPublicacao": {
+                "description": "Número publicação",
+                "type": "String"
+            }
+        }
+    },
+    "codeExample": "fonteAtos = Dados.pessoal.v2.atos;\n\ndadosAtos = fonteAtos.buscaDocumentos(campos: \"name, key, description, type, size, url\",parametros:[\"atoId\":null])\n\npercorrer (dadosAtos) { itemAtos ->\n\n}",
+    "description": "Atos",
+    "name": "atos"
+}

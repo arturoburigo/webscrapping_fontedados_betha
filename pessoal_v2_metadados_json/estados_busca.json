@@ -1,0 +1,103 @@
+{
+    "representation": {
+        "type": "Estado",
+        "defaultFields": [
+            "nome",
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de estados",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "pais.id": {
+            "description": "Id do pais",
+            "type": "Long"
+        },
+        "codigoIbge": {
+            "description": "Código no IBGE",
+            "type": "Integer"
+        },
+        "nome": {
+            "description": "Nome",
+            "type": "String"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        }
+    },
+    "types": {
+        "Pais": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla2C": {
+                "description": "Sigla ISO-2",
+                "type": "String"
+            },
+            "sigla3C": {
+                "description": "Sigla ISO-3",
+                "type": "String"
+            },
+            "sigla3D": {
+                "description": "Sigla 3D",
+                "type": "String"
+            },
+            "codigoBacen": {
+                "description": "Código no BACEN/IBGE",
+                "type": "String"
+            },
+            "codigoEsocial": {
+                "description": "Código no eSocial",
+                "type": "String"
+            }
+        },
+        "Estado": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "nome": {
+                "description": "Nome",
+                "type": "String"
+            },
+            "sigla": {
+                "description": "Sigla",
+                "type": "String"
+            },
+            "codigoIbge": {
+                "description": "Código no IBGE",
+                "type": "Integer"
+            },
+            "pais": {
+                "description": "País",
+                "type": "Pais"
+            }
+        }
+    },
+    "codeExample": "fonteEstados = Dados.pessoal.v2.estados;\n\ndadosEstados = fonteEstados.busca(campos: \"id, nome\",ordenacao: \"nome asc\")\n\npercorrer (dadosEstados) { itemEstados ->\n\n}",
+    "description": "Estados",
+    "name": "estados"
+}

@@ -1,0 +1,106 @@
+{
+    "representation": {
+        "type": "MatriculaFiltroSelecaoAvancadaFonteDados",
+        "defaultFields": []
+    },
+    "method": {
+        "name": "buscaSelecaoAvancada",
+        "verb": "GET",
+        "description": "Listagem de seleção avançada",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "id": {
+            "description": "Id seleção avançada",
+            "type": "Long"
+        },
+        "descricao": {
+            "description": "Descrição seleção avançada",
+            "type": "String"
+        }
+    },
+    "types": {
+        "EntidadeFiltravelSelecaoDtoAssociacao": {
+            "id": {
+                "type": "Long"
+            }
+        },
+        "CargoSelecaoAvacanda": {
+            "id": {
+                "description": "Identificador",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            }
+        },
+        "MatriculaFiltroSelecaoAvancadaFonteDados": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "descricao": {
+                "description": "Descrição",
+                "type": "String"
+            },
+            "tipoSelecaoMatricula": {},
+            "inicioFaixaMatricula": {
+                "type": "Integer"
+            },
+            "fimFaixaMatricula": {
+                "type": "Integer"
+            },
+            "inicioAdmissao": {
+                "type": "LocalDate"
+            },
+            "fimAdmissao": {
+                "type": "LocalDate"
+            },
+            "criterioGrupoFuncional": {},
+            "criterioMatricula": {},
+            "criterioLotacaoFisica": {},
+            "criterioTipoAfastamento": {},
+            "criterioCargo": {},
+            "criterioOrganograma": {},
+            "criterioVinculoEmpregaticio": {},
+            "classificacoesTipoAfastamento": {},
+            "tiposContrato": {},
+            "situacoes": {},
+            "matriculas": {
+                "type": "EntidadeFiltravelSelecaoDtoAssociacao"
+            },
+            "gruposFuncional": {
+                "type": "EntidadeFiltravelSelecaoDtoAssociacao"
+            },
+            "vinculosEmpregaticio": {
+                "type": "EntidadeFiltravelSelecaoDtoAssociacao"
+            },
+            "cargos": {
+                "type": "CargoSelecaoAvacanda"
+            },
+            "organogramas": {
+                "type": "EntidadeFiltravelSelecaoDtoAssociacao"
+            },
+            "lotacoesFisica": {
+                "type": "EntidadeFiltravelSelecaoDtoAssociacao"
+            }
+        }
+    },
+    "codeExample": "fonteSelecaoAvancada = Dados.pessoal.v2.selecaoAvancada;\n\nfiltroSelecaoAvancada = \"id = null\"\n\ndadosSelecaoAvancada = fonteSelecaoAvancada.buscaSelecaoAvancada(criterio: filtroSelecaoAvancada,campos: \"cargos(id, descricao), tipoSelecaoMatricula, descricao, id, criterioCargo, criterioOrganograma, criterioVinculoEmpregaticio, classificacoesTipoAfastamento, matriculas(id), situacoes\",ordenacao: \"id asc\")\n\npercorrer (dadosSelecaoAvancada) { itemSelecaoAvancada ->\n\n}",
+    "description": "SelecaoAvancada",
+    "name": "selecaoAvancada"
+}

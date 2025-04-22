@@ -1,0 +1,107 @@
+{
+    "representation": {
+        "type": "PessoaJuridica",
+        "defaultFields": [
+            "tipo",
+            "id"
+        ]
+    },
+    "method": {
+        "name": "busca",
+        "verb": "GET",
+        "description": "Listagem de pessoas jurídicas",
+        "queryParams": {
+            "offset": {
+                "type": "int"
+            },
+            "limit": {
+                "type": "int"
+            },
+            "filter": {
+                "type": "String"
+            },
+            "sort": {
+                "type": "String"
+            }
+        }
+    },
+    "expressions": {
+        "tipo": {
+            "description": "Tipo"
+        },
+        "nomeFantasia": {
+            "description": "Nome fantasia",
+            "type": "String"
+        },
+        "codigoInstFinanceira": {
+            "description": "Código Inst. Financeira",
+            "type": "String"
+        },
+        "cnpj": {
+            "description": "CNPJ",
+            "type": "String"
+        },
+        "id": {
+            "description": "Id",
+            "type": "Long"
+        },
+        "razaoSocial": {
+            "description": "Razão social",
+            "type": "String"
+        }
+    },
+    "types": {
+        "SindicatoFuncionario": {
+            "tipo": {
+                "description": "Tipo"
+            },
+            "mesContribuicao": {
+                "description": "Mês contribuição"
+            },
+            "numero": {
+                "description": "Número",
+                "type": "String"
+            },
+            "diasAviso": {
+                "description": "Dias de aviso",
+                "type": "Integer"
+            },
+            "dataBase": {
+                "description": "Data base",
+                "type": "MonthDay"
+            }
+        },
+        "PessoaJuridica": {
+            "id": {
+                "description": "Id",
+                "type": "Long"
+            },
+            "tipo": {
+                "description": "Tipo"
+            },
+            "razaoSocial": {
+                "description": "Razão social",
+                "type": "String"
+            },
+            "nomeFantasia": {
+                "description": "Nome fantasia",
+                "type": "String"
+            },
+            "cnpj": {
+                "description": "CNPJ",
+                "type": "String"
+            },
+            "codigoInstFinanceira": {
+                "description": "Código Inst. Financeira",
+                "type": "String"
+            },
+            "sindicato": {
+                "description": "Sindicato",
+                "type": "SindicatoFuncionario"
+            }
+        }
+    },
+    "codeExample": "fontePessoaJuridica = Dados.pessoal.v2.pessoaJuridica;\n\nfiltroPessoaJuridica = \"cnpj = null\"\n\ndadosPessoaJuridica = fontePessoaJuridica.busca(criterio: filtroPessoaJuridica,campos: \"id, tipo, nomeFantasia, razaoSocial, cnpj\",ordenacao: \"tipo asc\")\n\npercorrer (dadosPessoaJuridica) { itemPessoaJuridica ->\n\n}",
+    "description": "Pessoa Jurídica",
+    "name": "pessoaJuridica"
+}
